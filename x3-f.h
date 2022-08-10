@@ -1,10 +1,10 @@
 /************************************** 
 @brief 			 xbebhxx3函数合集
 @license: 		 GPLv3 
-@version  	     4.2
+@version  	     6.2
+@remarks         编译时加 -std=gnu++11 -lgdi32 -lwsock32
 @author          xbehxx3
 @date            2022/3/28
-@class           类名
 @file            x3-f.h
 Copyright (c) 2022-2077 xbebhxx3
 ***************************************/
@@ -16,6 +16,7 @@ x3-f.h
 |	 |- 获得debug权限
 |	 |- 判断管理员权限
 |	 |- 获得管理员权限
+|    |- 以system权限打开
 |- 进程操作
 |   |- 结束进程
 |   |- 判断进程是否存在 ,并返回进程id
@@ -36,12 +37,13 @@ x3-f.h
 |- 编/解码操作
 |	   |- Url编码
 |	   |- Url解码
+|	   |- 加密 
 |- 改变颜色
 |    |- RGB初始化 
 |    |- RGB设置
 |- 锁定鼠标键盘
 |- 获得鼠标位置
-|- 清屏
+|- 清屏 
 |- str删除空格
 |- 获得当前ip
 |- 获得当前用户名
@@ -68,7 +70,7 @@ x3-f.h
  *  @author          xbebhxx3
  *  @version         版本号
  *  @date            日期
- #  Copyright (c) 2022-2077 xbebhxx3
+ #  Copyright (c) 2022-2077 by xbebhxx3, All Rights Reserved
 **********************************************/
 
 #include <Windows.h> 
@@ -147,6 +149,121 @@ bool RunAsAdmin(){
 	exit(0);
 } 
 
+/******************************
+ *  @brief     以system用户打开可执行文件 
+ *  @param     NULL
+ *  @Return: 	1成功,0失败 
+ *  @note      头文件： #include <Windows.h>
+ *  @Sample usage: UseSystem("cmd"); 
+ *  @author     xbebhxx3
+ *  @version    1.0
+ *  @date       2022/3/28 
+ #  Copyright (c) 2022-2077 xbebhxx3
+******************************/
+int isProcess(const char* szImageName);
+bool UseSystem(const char* exec) {
+	int num = MultiByteToWideChar(0,0,exec,-1,NULL,0);
+	wchar_t *wexec = new wchar_t[num];
+	MultiByteToWideChar(0,0,exec,-1,wexec,num);
+	DWORD PID_TO_IMPERSONATE = isProcess("winlogon.exe");
+	HANDLE tokenHandle = NULL;
+	HANDLE duplicateTokenHandle = NULL;
+	//创建进程所必须的结构
+	STARTUPINFO startupInfo;
+	PROCESS_INFORMATION processInformation;
+	ZeroMemory(&startupInfo, sizeof(STARTUPINFO));
+	ZeroMemory(&processInformation, sizeof(PROCESS_INFORMATION));
+	startupInfo.cb = sizeof(STARTUPINFO);
+	//获取当前自身进程的句柄进行调整权限
+	BOOL getCurrentToken = OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, NULL);
+	Debug();
+	// OpenProcess获取指定进程的句柄
+	HANDLE processHandle = OpenProcess(PROCESS_QUERY_INFORMATION, true, PID_TO_IMPERSONATE);
+	if (!processHandle){
+		//绕过受微软的进程保护
+		                   OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, true, PID_TO_IMPERSONATE);
+	}
+	// 获取指定进程的句柄令牌
+	OpenProcessToken(processHandle, TOKEN_DUPLICATE | TOKEN_ASSIGN_PRIMARY | TOKEN_QUERY, &tokenHandle);
+	//模拟一个登陆用户的访问令牌的安全上下文
+	if (ImpersonateLoggedOnUser(tokenHandle)) RevertToSelf();
+	// 拷贝一个当前令牌相同权限的令牌
+	DuplicateTokenEx(tokenHandle, TOKEN_ADJUST_DEFAULT | TOKEN_ADJUST_SESSIONID | TOKEN_QUERY | TOKEN_DUPLICATE | TOKEN_ASSIGN_PRIMARY, NULL, SecurityImpersonation, TokenPrimary, &duplicateTokenHandle);
+	// 创建指定令牌启动的进程
+	return CreateProcessWithTokenW(duplicateTokenHandle, LOGON_WITH_PROFILE,wexec, NULL, 0, NULL, NULL, (LPSTARTUPINFOW)&startupInfo, &processInformation) ;
+
+}
+
+/******************************
+ *  @brief     以TrustedInstaller用户打开可执行文件 
+ *  @param     NULL
+ *  @Return:    1成功,0失败 
+ *  @note      头文件： #include <Windows.h>
+ *  @Sample usage: UseTrustedInstaller("cmd"); 
+ *  @remarks    必须依赖IsProcessRunAsAdmin获得TrustedInstaller服务pid 编译时加 -std=gnu++11 
+ *  @author     xbebhxx3
+ *  @version    5.0
+ *  @date       2022/8/10 
+ #  Copyright (c) 2022-2077 xbebhxx3
+******************************/
+bool UseTrustedInstaller(const char* exec){
+	int num = MultiByteToWideChar(0,0,exec,-1,NULL,0);
+	wchar_t *wexec = new wchar_t[num];
+	MultiByteToWideChar(0,0,exec,-1,wexec,num);
+	Debug();
+	HANDLE hSystemToken = nullptr, IhDupToken = nullptr, hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0);
+	PROCESSENTRY32W pe = {0};
+	pe.dwSize = sizeof(PROCESSENTRY32W);
+	Process32FirstW(hSnapshot, &pe);
+	while( Process32NextW(hSnapshot, &pe) && _wcsicmp(pe.szExeFile, L"winlogon.exe") );
+	OpenProcessToken(OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION,FALSE,pe.th32ProcessID),MAXIMUM_ALLOWED,&hSystemToken);
+	SECURITY_ATTRIBUTES ItokenAttributes;
+	ItokenAttributes.nLength = sizeof(SECURITY_ATTRIBUTES);
+	ItokenAttributes.lpSecurityDescriptor = nullptr;
+	ItokenAttributes.bInheritHandle = FALSE;
+	DuplicateTokenEx(hSystemToken,MAXIMUM_ALLOWED,&ItokenAttributes,SecurityImpersonation,TokenImpersonation,&IhDupToken);
+	ImpersonateLoggedOnUser(IhDupToken);//创建进程所必须的结构
+	HANDLE hTIProcess = nullptr, hTIToken = nullptr, hDupToken = nullptr;
+    HANDLE hToken = nullptr;
+    LPVOID lpEnvironment = nullptr;
+	LPWSTR lpBuffer = nullptr;
+	SC_HANDLE hSCManager = nullptr;
+	SC_HANDLE hService = nullptr;
+	DWORD dwProcessId = 0;
+	BOOL res = TRUE, started = TRUE;
+	hSCManager = OpenSCManager(nullptr,SERVICES_ACTIVE_DATABASE,GENERIC_EXECUTE);
+	hService = OpenServiceW(hSCManager,L"TrustedInstaller",GENERIC_READ | GENERIC_EXECUTE);
+	SERVICE_STATUS_PROCESS statusBuffer = {0};
+	DWORD bytesNeeded;
+	while( 	dwProcessId == 0 &&started && (res = QueryServiceStatusEx(hService,SC_STATUS_PROCESS_INFO,reinterpret_cast<LPBYTE>(&statusBuffer),sizeof(SERVICE_STATUS_PROCESS),&bytesNeeded)) ) {
+		switch( statusBuffer.dwCurrentState ) {
+			case SERVICE_STOPPED:
+				started = StartServiceW(hService, 0, nullptr);
+			case SERVICE_STOP_PENDING:
+				Sleep(statusBuffer.dwWaitHint);
+			case SERVICE_RUNNING:
+				dwProcessId = statusBuffer.dwProcessId;
+		}
+	}
+	hTIProcess = OpenProcess( PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, dwProcessId);
+	OpenProcessToken(hTIProcess, MAXIMUM_ALLOWED, &hTIToken);
+	SECURITY_ATTRIBUTES tokenAttributes;
+	tokenAttributes.nLength = sizeof(SECURITY_ATTRIBUTES);
+	tokenAttributes.lpSecurityDescriptor = nullptr;
+	tokenAttributes.bInheritHandle = FALSE;
+	DuplicateTokenEx(hTIToken,MAXIMUM_ALLOWED,&tokenAttributes,SecurityImpersonation,TokenImpersonation,&hDupToken);
+	OpenProcessToken(GetCurrentProcess(), TOKEN_READ, &hToken);
+	DWORD nBufferLength = GetCurrentDirectoryW(0, nullptr);
+	lpBuffer = (LPWSTR)(new wchar_t[nBufferLength]{0});
+	GetCurrentDirectoryW(nBufferLength, lpBuffer);
+	STARTUPINFOW startupInfo;
+	ZeroMemory(&startupInfo, sizeof(STARTUPINFOW));
+	startupInfo.lpDesktop = (LPWSTR)L"Winsta0\\Default";
+	PROCESS_INFORMATION processInfo;
+	ZeroMemory(&processInfo, sizeof(PROCESS_INFORMATION));
+    return CreateProcessWithTokenW(hDupToken,LOGON_WITH_PROFILE,nullptr,wexec,CREATE_UNICODE_ENVIRONMENT,lpEnvironment,lpBuffer,&startupInfo,&processInfo);
+}
+
 //权限操作结束 
 
 //进程操作开始 
@@ -161,7 +278,7 @@ bool RunAsAdmin(){
  *  @date       2022/3/15
  #  Copyright (c) 2022-2077 xbebhxx3
 ******************************/
-void KillProcess(char* szImageName) {
+void KillProcess(const char* szImageName) {
 	PROCESSENTRY32 pe = {sizeof(PROCESSENTRY32) }; //获得进程列表
 	HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);//拍摄快照
 	BOOL bRet = Process32First(hProcess,&pe);//检索快照中第一个进程信息
@@ -185,7 +302,7 @@ void KillProcess(char* szImageName) {
  * 	@date       2022/3/15
  #  Copyright (c) 2022-2077 xbebhxx3
 ******************************/
-int isProcess(char* szImageName) {
+int isProcess(const char* szImageName) {
 	PROCESSENTRY32 pe = {sizeof(PROCESSENTRY32) }; //获得进程列表 
 	HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);//拍摄快照 
 	BOOL bRet = Process32First(hProcess,&pe);//检索快照中第一个进程信息 
@@ -208,7 +325,7 @@ int isProcess(char* szImageName) {
  * 	@date       2022/5/18
  #  Copyright (c) 2022-2077 xbebhxx3
 ******************************/
-string GetProcesslocation(char* szImageName){
+string GetProcesslocation(const char* szImageName){
 	if(isProcess(szImageName)==0)return "0";
 	HANDLE hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0); // 创建进程快照
 	PROCESSENTRY32 process = {sizeof(PROCESSENTRY32)};	// 用来接收 hProcessSnap 的信息	
@@ -287,7 +404,6 @@ bool CriticalProcess(DWORD dwProcessID, BOOL fSuspend){
 	if(NtSetInformationProcess(OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessID), (PROCESS_INFORMATION_CLASS)29, &fSuspend, sizeof(ULONG))<0)return 0;
 	else return 1;
 }
-
 
 //进程操作结束 
 
@@ -752,6 +868,7 @@ void rgb_set(int wr,int wg,int wb,int br,int bg,int bb) {
  #  Copyright (c) 2022-2077 xbebhxx3
 ******************************/
 bool lockkm(bool lockb=false){
+	cout<<lockb;
 	HINSTANCE hIn = NULL;
 	hIn = LoadLibrary("user32.dll");
 	if(hIn){
@@ -826,7 +943,7 @@ void mouxy(int &x,int &y) {
  *  @date       2021/9/23
  #  Copyright (c) 2021-2077 xbebhxx3
 ******************************/
-string ip(){
+string getIp(){
 	WSADATA wsaData;
     int ret = WSAStartup(MAKEWORD(2, 2), &wsaData);
     char hostname[256];
@@ -887,12 +1004,10 @@ string GetSystemVersion (){
  *  @date       2022/3/5 
  #  Copyright (c) 2022-2077 xbebhxx3
 ******************************/
-string getCmdResult(char Cmd[])  {
+char* getCmdResult(char* Cmd)  {
 	char Result[1024000] = {0};
     char buf1[1024000] = {0};
-    FILE *pf = NULL;
-    snprintf(Cmd,sizeof(Cmd),"%s 2>&1",Cmd);
-    if( (pf = popen(Cmd, "r")) == NULL ) return "";
+    FILE *pf = popen(Cmd, "r");
     while(fgets(buf1, sizeof buf1, pf)) snprintf(Result,1024000,"%s%s",Result , buf1);
     pclose(pf);
     memset(Cmd,'\0',sizeof(Cmd));
@@ -923,6 +1038,11 @@ void OutoutMiddle(const char str[],int y){
 	printf("%s",str);//输出 
 }
 
+//隐藏窗口 #include<Windows.h>
+void HideWindow(){
+	ShowWindow(GetForegroundWindow(),SW_HIDE);
+} 
+
 //真·全屏 最大化 取消标题栏及边框#include<Windows.h>
 void full_screen() {
 	HWND hwnd = GetForegroundWindow();
@@ -935,11 +1055,6 @@ void full_screen() {
 
 	SetWindowPos(hwnd, HWND_TOP, 0, 0, cx+18, cy, 0);
 }
-
-//隐藏窗口 #include<Windows.h>
-void HideWindow(){
-	ShowWindow(GetForegroundWindow(),SW_HIDE);
-} 
 
 /******************************
  *  @brief     破坏mbr(very danger) 
