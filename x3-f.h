@@ -30,7 +30,6 @@ x3-f.h
 |	 |- 判断管理员权限
 |	 |- 获得管理员权限
 |	 |- 获得TrustedInstaller权限
-|        |- 获得system权限
 |	 |- 以system权限打开可执行文件
 |	 |- 以TrustedInstaller权限打开可执行文件
 |- 进程操作
