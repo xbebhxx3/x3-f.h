@@ -30,7 +30,9 @@ x3-f.h
 |	 |- 判断管理员权限
 |	 |- 获得管理员权限
 |	 |- 获得TrustedInstaller权限
-|    |- 以system权限打开
+|    |- 获得system权限
+|	 |- 以system权限打开可执行文件
+|	 |- 以TrustedInstaller权限打开可执行文件
 |- 进程操作
 |   |- 结束进程
 |   |- 判断进程是否存在 ,并返回进程id
@@ -208,7 +210,7 @@ bool RunAsTi()
 }
 
 /**************************************************
- *  @brief         以system用户打开可执行文件
+ *  @brief         以system权限打开可执行文件
  *  @return        1成功,0失败
  *  @note          头文件： #include <Windows.h>
  *  @calls          Debug
@@ -255,7 +257,7 @@ bool UseSystem(const char *exec)
 }
 
 /**************************************************
- *  @brief         以TrustedInstaller用户打开可执行文件
+ *  @brief         以TrustedInstaller权限打开可执行文件
  *  @return        1成功,0失败
  *  @note          头文件： #include <Windows.h>
  *  @Sample usage  UseTrustedInstaller("cmd");
@@ -278,7 +280,7 @@ bool UseTrustedInstaller(const char *exec)
 	PROCESSENTRY32W pe = {0};
 	pe.dwSize = sizeof(PROCESSENTRY32W);
 	Process32FirstW(hSnapshot, &pe);
-	while (Process32NextW(hSnapshot, &pe) && _wcsicmp(pe.szExeFile, L"winlogon.exe"))://当前进程是winlogon.exe
+	while (Process32NextW(hSnapshot, &pe) && _wcsicmp(pe.szExeFile, L"winlogon.exe"));//当前进程是winlogon.exe
 	OpenProcessToken(OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, pe.th32ProcessID), MAXIMUM_ALLOWED, &hSystemToken);// 获取指定进程的句柄令牌
 	SECURITY_ATTRIBUTES ItokenAttributes;
 	ItokenAttributes.nLength = sizeof(SECURITY_ATTRIBUTES);
@@ -539,7 +541,7 @@ bool CloseService(char *service)
 	}
 	if (status.dwCurrentState == SERVICE_RUNNING) //如果正在运行，停止服务
 	{
-		if (::ControlService(hSvc, ERVICE_CONTROL_STOP, &status) == FALSE)
+		if (ControlService(hSvc, SERVICE_CONTROL_STOP, &status) == FALSE)
 		{
 			CloseServiceHandle(hSvc);
 			CloseServiceHandle(hSC);
